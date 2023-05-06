@@ -17,4 +17,12 @@ public class Player : MonoBehaviour
     {
         transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * speed * Time.deltaTime;
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Object") {
+            if (Input.GetKey("e")) {
+                Debug.Log("Interactuo?");
+            }
+        }    
+    }
 }

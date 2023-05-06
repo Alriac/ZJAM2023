@@ -24,7 +24,7 @@ public class MoneyDesperatePerson : MonoBehaviour
     }
 
     /// <summary>
-    /// Recibe qué objeto ha sido encendido o apagado.
+    /// Recibe que objeto ha sido encendido o apagado.
     /// </summary>
     private void OnObjectSwitched(bool status, EnumObjectTypes objectType, int number)
     {
