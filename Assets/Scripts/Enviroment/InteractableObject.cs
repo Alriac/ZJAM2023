@@ -8,9 +8,12 @@ public class InteractableObject : MonoBehaviour
 {
 
     public bool SwitchStatus { get; private set; } // On/Off
+    [HideInInspector]
     public double TimeOfSwitch;
     public double Cooldown;
     public EventFromObject[] EventsLaunched; // Lista de eventos que lanza, rellenar desde inspector.
+    
+    [HideInInspector]
     public bool IsBroken; // Algunos objetos ya no pueden usarse mas.
     public EnumObjectTypes ObjectType;
 
@@ -33,6 +36,7 @@ public class InteractableObject : MonoBehaviour
         return SwitchStatus;
     }
 
+    [System.Serializable]
     public struct EventFromObject
     {
         public bool OnSwitchStatus; // Determina si el evento se procesa con el objeto encendido o con el objeto apagado.
