@@ -144,6 +144,7 @@ public class GrandmaNeeds : MonoBehaviour
 
                 // Placeholder: Reduce un porcentaje fijo de enfado.
                 this.Angryness *= 0.85f;
+                if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
 
                 CurrentRequests.RemoveAt(i);
                 break;
