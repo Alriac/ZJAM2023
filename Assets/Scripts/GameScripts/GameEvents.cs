@@ -20,9 +20,9 @@ public class GameEvents : MonoBehaviour
     /// </summary>
     public Action<bool, EnumObjectTypes, int> OnObjectSwitched;
     /// <summary>
-    /// Eventos generales sin datos asociados mas que el tipo de evento.
+    /// Eventos generales sin datos asociados mas que el tipo de evento y objeto que lo ha generado.
     /// </summary>
-    public Action<EnumEventTypes> OnEventHappened;
+    public Action<EnumEventTypes, EnumObjectTypes> OnEventHappened;
 
     // Actualiza la cifra actual del score seleccionado.
     public Action<EnumScoreType, float> OnScoreChanged;

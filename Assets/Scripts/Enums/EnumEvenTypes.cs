@@ -4,5 +4,13 @@ public enum EnumEventTypes
     WindowOpenedTooLong,
     FishOffTooLong,
     ObjectSwitchedOn,
-    ObjectSwitchedOff
+    ObjectSwitchedOff,
+    // Eventos de necesidades cumplidas
+    ObjectReady,
+    //ReadyTea,
+    //ReadyOven,
+    //ReadyWindow,
+    //ReadyHeater,
+    //ReadyTV,
+    //ReadyLamp,
 }

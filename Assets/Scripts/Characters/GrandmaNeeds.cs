@@ -7,7 +7,7 @@ public class GrandmaNeeds : MonoBehaviour
 {
 
     public float AngrynessTotal { get { return Angryness; } }
-    float Angryness;
+    float Angryness = 0;
 
     public float StatHunger;
     public float StatFun;
@@ -45,7 +45,7 @@ public class GrandmaNeeds : MonoBehaviour
     }
     void Start()
     {
-
+        GameEvents.Ins.OnEventHappened += OnEventHappened;
     }
 
     // Update is called once per frame
@@ -97,6 +97,8 @@ public class GrandmaNeeds : MonoBehaviour
         return false;
     }
 
+
+
     // Te recuerda una petición ya realizada, elevando el nivel de impaciencia.
     void RemindCurrentRequest()
     {
@@ -113,4 +115,39 @@ public class GrandmaNeeds : MonoBehaviour
         // TODO: Show text in the bubble.
         Debug.Log(text);
     }
+
+
+    #region Recepción de Eventos
+
+    /*void ObjectSwitched(bool status, EnumObjectTypes objectType, int times)
+    {
+
+    }*/
+
+    void OnEventHappened(EnumEventTypes eventType, EnumObjectTypes objectType)
+    {
+        if (eventType != EnumEventTypes.ObjectReady) return;
+
+        for(int i = 0; i < CurrentRequests.Count; i++)
+        {
+            if (CurrentRequests[i].ObjectType == objectType)
+            {
+                // Reducir enfado por objetivo completado.
+                Request req = CurrentRequests[i];
+
+                // Placeholder: Reduce un porcentaje fijo de enfado.
+                this.Angryness *= 0.85f;
+
+                CurrentRequests.RemoveAt(i);
+                break;
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.Ins.OnEventHappened -= OnEventHappened;
+    }
+
+    #endregion Recepción de Eventos
 }
