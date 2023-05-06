@@ -28,6 +28,13 @@ public class GrandmaNeeds : MonoBehaviour
     public EnumObjectTypes[] ObjectsForFun;
     public EnumObjectTypes[] ObjectsForTemp;
 
+    public string[] TextsForHunger;
+    public string[] TextsForHungerReminder;
+    public string[] TextsForFun;
+    public string[] TextsForFunReminder;
+    public string[] TextsForTemp;
+    public string[] TextsForTempReminder;
+
     public Sprite Food;
     public Sprite Hot;
     public Sprite Cold;
@@ -66,15 +73,18 @@ public class GrandmaNeeds : MonoBehaviour
     {
         GameEvents.Ins.OnObjectSwitched += OnObjectSwitched;
         GameEvents.Ins.OnEventHappened += OnEventHappened;
-        current_cooldown = UnityEngine.Random.Range(0.0f, 200.0f)/100;
+        current_cooldown = UnityEngine.Random.Range(0.0f, 200.0f) / 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GeneratedTextBubble == null) { // Quitar cuando metamos todos los tipos.
-            if (TimeLastRequest + MinTimeBetweenReminders < Time.time) {
-                if (UnityEngine.Random.Range(0.0f, 100.0f) > 60.0f) {
+        if (GeneratedTextBubble == null)
+        { // Quitar cuando metamos todos los tipos.
+            if (TimeLastRequest + MinTimeBetweenReminders < Time.time)
+            {
+                if (UnityEngine.Random.Range(0.0f, 100.0f) > 60.0f)
+                {
                     if (!TryAddRequest()) RemindCurrentRequest();
                     TimeLastRequest = Time.time;
                 }
@@ -94,14 +104,20 @@ public class GrandmaNeeds : MonoBehaviour
         if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
     }
 
-    private void SetNeedSprite(EnumObjectTypes objectType) {
-        if (objectType == EnumObjectTypes.Oven) {
+    private void SetNeedSprite(EnumObjectTypes objectType)
+    {
+        if (objectType == EnumObjectTypes.Oven)
+        {
             Debug.Log("Hola");
             GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Food;
-        } else if (objectType == EnumObjectTypes.Tv) {
+        }
+        else if (objectType == EnumObjectTypes.Tv)
+        {
             Debug.Log("Adios");
             GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Fun;
-        } else if (objectType == EnumObjectTypes.AC) {
+        }
+        else if (objectType == EnumObjectTypes.AC)
+        {
             Debug.Log("Hasta luego");
             GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Hot;
         }
@@ -159,6 +175,24 @@ public class GrandmaNeeds : MonoBehaviour
             SayText($"Abuelita: Recuerda usar el {toRemind.ObjectType.ToString()}, ya te lo he dicho {toRemind.RemindersGiven} veces");
         }
     }
+
+    string GetTextForRequest(EnumStatType stat, bool isReminder)
+    {
+        string[] possibleTexts = null;
+        switch (stat)
+        {
+            case EnumStatType.Entretainment:
+                possibleTexts = isReminder ? TextsForFunReminder : TextsForFun; break;
+            case EnumStatType.Hunger:
+                possibleTexts = isReminder ? TextsForHungerReminder : TextsForHunger; break;
+            case EnumStatType.Temperature:
+                possibleTexts = isReminder ? TextsForTempReminder : TextsForTemp; break;
+        }
+
+        if (possibleTexts == null) return string.Empty;
+        return possibleTexts[UnityEngine.Random.Range(0, possibleTexts.Length)];
+    }
+
 
     void SayText(string text = default(string))
     {
