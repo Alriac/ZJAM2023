@@ -15,6 +15,11 @@ public class GrandmaNeeds : MonoBehaviour
     public float StatFun;
     public float StatTemp;
 
+    public float current_cooldown;
+    public float cooldown = 3.0f;
+    public GameObject TextBubble;
+    public GameObject GeneratedTextBubble;
+
     float TimeLastRequest;
     public float MinTimeBetweenRequests;
     public float MinTimeBetweenReminders;
@@ -23,7 +28,11 @@ public class GrandmaNeeds : MonoBehaviour
     public EnumObjectTypes[] ObjectsForFun;
     public EnumObjectTypes[] ObjectsForTemp;
 
-
+    public Sprite Food;
+    public Sprite Hot;
+    public Sprite Cold;
+    public Sprite Fun;
+    public Sprite Light;
 
     List<Request> CurrentRequests = new List<Request>();
 
@@ -50,24 +59,21 @@ public class GrandmaNeeds : MonoBehaviour
     void Start()
     {
         GameEvents.Ins.OnEventHappened += OnEventHappened;
+        current_cooldown = UnityEngine.Random.Range(0.0f, 200.0f)/100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (TimeLastRequest + MinTimeBetweenReminders < Time.time)
-        {
-            if (!TryAddRequest()) RemindCurrentRequest();
-            TimeLastRequest = Time.time;
+        if (GeneratedTextBubble == null) { // Quitar cuando metamos todos los tipos.
+            if (TimeLastRequest + MinTimeBetweenReminders < Time.time) {
+                if (UnityEngine.Random.Range(0.0f, 100.0f) > 60.0f) {
+                    if (!TryAddRequest()) RemindCurrentRequest();
+                    TimeLastRequest = Time.time;
+                }
+            }
         }
-
-        // TODO: Aumentar enfado segun las peticiones abiertas actualmente.
-        //foreach(Request req in CurrentRequests) {
-        //    AngrynessSpeed = 
-        //    if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
-        //}
         AddAngrynessFromRequests();
-
     }
 
     void AddAngrynessFromRequests()
@@ -93,13 +99,13 @@ public class GrandmaNeeds : MonoBehaviour
             statTypes.Remove(CurrentRequests[i].StatType);
         }
 
-        // A�ade aleatoriamente un statype que no haya pedido ya.
+        // Agrega aleatoriamente un statype que no haya pedido ya.
         if (statTypes.Count > 0)
         {
             // Elige el tipo de stat que queire satisfacer.
             EnumStatType newStatType = statTypes[UnityEngine.Random.Range(0, statTypes.Count)];
 
-            // Elige el objeto que necesitas usar seg�n el tipo de stat.
+            // Elige el objeto que necesitas usar segun el tipo de stat.
             EnumObjectTypes[] objectTypeSelected = { };
             switch (newStatType)
             {
@@ -111,9 +117,11 @@ public class GrandmaNeeds : MonoBehaviour
                     objectTypeSelected = ObjectsForTemp; break;
             }
 
-            // Crea nuevo request eligiendo aleatoriamente el objeto que lo satisfacir� (provisional).
+            // Crea nuevo request eligiendo aleatoriamente el objeto que lo satisfacira (provisional).
             Request newReq = new Request(newStatType, objectTypeSelected[UnityEngine.Random.Range(0, objectTypeSelected.Length)]);
             CurrentRequests.Add(newReq);
+            GeneratedTextBubble = Instantiate(TextBubble, new Vector3(transform.position.x + 1.0f, transform.position.y + 0.75f, 1.0f), Quaternion.identity);
+
             SayText($"Abuelita: Quiero que uses {newReq.ObjectType.ToString()}, apresurate");
             return true;
         }
@@ -127,7 +135,6 @@ public class GrandmaNeeds : MonoBehaviour
         {
             Request toRemind = CurrentRequests[UnityEngine.Random.Range(0, CurrentRequests.Count)];
             toRemind.RemindersGiven++;
-            GetComponent<Grandma>().GenerateBubble(toRemind.ObjectType);
             SayText($"Abuelita: Recuerda usar el {toRemind.ObjectType.ToString()}, ya te lo he dicho {toRemind.RemindersGiven} veces");
         }
     }
@@ -160,6 +167,7 @@ public class GrandmaNeeds : MonoBehaviour
                 // Placeholder: Reduce un porcentaje fijo de enfado.
                 this.Angryness = this.Angryness * 0.85f;
                 if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
+                Destroy(GeneratedTextBubble);
 
                 CurrentRequests.RemoveAt(i);
                 break;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1410261452854007301}
   - component: {fileID: 1237299414837017715}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Need
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767114342041231644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.011, y: 0.001, z: 0}
-  m_LocalScale: {x: 3.276214, y: 4.7767196, z: 3.276214}
+  m_LocalPosition: {x: 0.004, y: 0.019, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 358584658083042731}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6eb8b69a5deb6d240890cb1f453a3697, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8363394955997831004
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5021658173417421498}
   - component: {fileID: 7854759735579707735}
   m_Layer: 0
-  m_Name: Bubble 1
+  m_Name: BubbleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,13 +110,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8363394955997831004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.85, y: -1.79, z: 1}
-  m_LocalScale: {x: 1.7136, y: 1, z: 1}
+  m_LocalPosition: {x: -6.81, y: -2.12, z: 1}
+  m_LocalScale: {x: 5.914135, y: 5.878561, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1410261452854007301}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5021658173417421498
 SpriteRenderer:
@@ -159,9 +159,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a6bb62032ee03040acb3121a60651d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -187,3 +187,4 @@ MonoBehaviour:
   offset: 0.5
   current_lifetime: 0
   lifetime: 1.5
+  need_container: {fileID: 767114342041231644}

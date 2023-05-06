@@ -2055,7 +2055,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1919625899}
   - component: {fileID: 1919625898}
-  - component: {fileID: 1919625900}
   - component: {fileID: 1919625902}
   - component: {fileID: 1919625901}
   m_Layer: 0
@@ -2132,22 +2131,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1919625900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919625897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 829a253673d686b4d9ecb970cad247af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  current_cooldown: 0
-  cooldown: 2
-  TextBubble: {fileID: 8363394955997831004, guid: a9871df53cb5e5d4ba877975083bae5f, type: 3}
-  GeneratedTextBubble: {fileID: 0}
 --- !u!95 &1919625901
 Animator:
   serializedVersion: 5
@@ -2184,11 +2167,20 @@ MonoBehaviour:
   StatHunger: 0
   StatFun: 0
   StatTemp: 0
+  current_cooldown: 0
+  cooldown: 3
+  TextBubble: {fileID: 8363394955997831004, guid: a9871df53cb5e5d4ba877975083bae5f, type: 3}
+  GeneratedTextBubble: {fileID: 0}
   MinTimeBetweenRequests: 3.5
   MinTimeBetweenReminders: 3.5
   ObjectsForHunger: 00000000
   ObjectsForFun: 02000000
   ObjectsForTemp: 04000000
+  Food: {fileID: 21300000, guid: 6eb8b69a5deb6d240890cb1f453a3697, type: 3}
+  Hot: {fileID: 21300000, guid: 732206f972428454e9646f7dba1bbe5b, type: 3}
+  Cold: {fileID: 21300000, guid: 4e07400b9472f004bbd25736fe84037f, type: 3}
+  Fun: {fileID: 21300000, guid: 5db54f5cc2767f94289676e81b110570, type: 3}
+  Light: {fileID: 21300000, guid: bb1be26d3ee6e0a4ab2701cc4ace4ec2, type: 3}
 --- !u!1 &2024516332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,6 +2466,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2733466165514050256
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 358584658083042731, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363394955997831004, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
+      propertyPath: m_Name
+      value: BubbleText
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
 --- !u!1001 &2852098712908339592
 PrefabInstance:
   m_ObjectHideFlags: 0

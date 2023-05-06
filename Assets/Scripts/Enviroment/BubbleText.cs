@@ -11,6 +11,8 @@ public class BubbleText : MonoBehaviour
     public float current_lifetime;
     public float lifetime = 1.0f;
 
+    public GameObject need_container;
+
     // Start is called before the first frame update
     void Start()
     {
