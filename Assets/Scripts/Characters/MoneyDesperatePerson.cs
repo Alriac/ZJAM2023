@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class MoneyDesperatePerson : MonoBehaviour
 {
     public float AngrynessLevel = 0; // Max is always 100

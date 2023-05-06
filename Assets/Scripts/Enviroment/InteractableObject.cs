@@ -1,27 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>
 /// Objeto interaccionable de la casa: Horno, Luz, Ventana...
 /// </summary>
+[DisallowMultipleComponent]
 public class InteractableObject : MonoBehaviour
 {
-
+    #region Inspector variables
     public bool SwitchStatus { get; private set; } // On/Off
+    public bool HighlightStatus { get; private set; } // Highligted?
+    [SerializeField]
+    EnumObjectTypes ObjectType;
+    [SerializeField]
+    double Cooldown;
+    [SerializeField]
+    EventFromObject[] EventsLaunched; // Lista de eventos que lanza, rellenar desde inspector.
+
+    #endregion Inspector variables
+
+    #region Internal variables
+
     [HideInInspector]
     public double TimeOfSwitch;
-    public double Cooldown;
-    public EventFromObject[] EventsLaunched; // Lista de eventos que lanza, rellenar desde inspector.
-    
     [HideInInspector]
     public bool IsBroken; // Algunos objetos ya no pueden usarse mas.
-    public EnumObjectTypes ObjectType;
+
+    #endregion Internal variables
+
+    #region Events
+
+    public Action<bool> OnHighlighted;
+
+    #endregion Events
 
     /// <summary>
     /// Cambia el estado on/off o abierto/cerrado del objeto.
     /// </summary>
     /// <returns>El nuevo estado de on/off o abierto/cerrado.</returns>
-    public bool Swtich()
+    public bool Switch()
     {
         SwitchStatus = !SwitchStatus;
         for (int i = 0; i < EventsLaunched.Length; i++)
@@ -30,10 +49,19 @@ public class InteractableObject : MonoBehaviour
             EventsLaunched[i].NextTimeLaunched = Time.time + EventsLaunched[i].LaunchAfterTime;
             EventsLaunched[i].WasLaunched = false;
         }
-        GameEvents.Ins.OnEventHappened(SwitchStatus ? EnumEventTypes.ObjectSwitchedOn : EnumEventTypes.ObjectSwitchedOff);
-        GameEvents.Ins.OnObjectSwitched(SwitchStatus, ObjectType, 1);
+        if (GameEvents.Ins.OnEventHappened != null) GameEvents.Ins.OnEventHappened(SwitchStatus ? EnumEventTypes.ObjectSwitchedOn : EnumEventTypes.ObjectSwitchedOff);
+        if (GameEvents.Ins.OnObjectSwitched != null) GameEvents.Ins.OnObjectSwitched(SwitchStatus, ObjectType, 1);
         Debug.Log($"Objeto: {gameObject.name}, Evento: {(SwitchStatus ? EnumEventTypes.ObjectSwitchedOn : EnumEventTypes.ObjectSwitchedOff)}");
         return SwitchStatus;
+    }
+
+    /// <summary>
+    /// Resalta el objeto o lo mantiene resaltado si ya lo está.
+    /// </summary>
+    public void HighlightObject(bool isHighlighted)
+    {
+        HighlightStatus = isHighlighted;
+        if (OnHighlighted != null) OnHighlighted(isHighlighted);
     }
 
     [System.Serializable]

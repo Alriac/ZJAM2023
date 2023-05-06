@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class GameEvents : MonoBehaviour
 {
     public static GameEvents Ins;
@@ -26,4 +27,5 @@ public class GameEvents : MonoBehaviour
     // Actualiza la cifra actual del score seleccionado.
     public Action<EnumScoreType, float> OnScoreChanged;
 
+    public Action OnPlayerActionKey;
 }
