@@ -35,6 +35,16 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        if (vertical_move == 0) {
+            a.SetBool("VerWalkDown", false);
+            //a.SetBool("VerWalkUp", false);
+        } else {
+            if (vertical_move > 0) {
+                //a.SetBool("VerWalkUp", true);
+            } else {
+                a.SetBool("VerWalkDown", true);
+            }
+        }
         transform.position += new Vector3(horizontal_move, vertical_move, 0) * speed * Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Space) && GameEvents.Ins.OnPlayerActionKey != null) {
             GameEvents.Ins.OnPlayerActionKey();

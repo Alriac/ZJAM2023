@@ -7,6 +7,7 @@ public class ObjectHighlight : MonoBehaviour
 {
 
     SpriteRenderer HighlightSprite;
+    
     InteractableObject IntObject;
     private void Awake()
     {
