@@ -17,9 +17,9 @@ public class GrandmaNeeds : MonoBehaviour
     public float MinTimeBetweenRequests;
     public float MinTimeBetweenReminders;
 
-    public EnumObjectTypes ObjectsForHunger;
-    public EnumObjectTypes ObjectsForFun;
-    public EnumObjectTypes ObjectsForTemp;
+    public EnumObjectTypes[] ObjectsForHunger;
+    public EnumObjectTypes[] ObjectsForFun;
+    public EnumObjectTypes[] ObjectsForTemp;
 
     List<Request> CurrentRequests = new List<Request>();
 
@@ -75,13 +75,26 @@ public class GrandmaNeeds : MonoBehaviour
         // Añade aleatoriamente un statype que no haya pedido ya.
         if(statTypes.Count > 0)
         {
+            // Elige el tipo de stat que queire satisfacer.
             EnumStatType newStatType = statTypes[UnityEngine.Random.Range(0, statTypes.Count)];
 
+            // Elige el objeto que necesitas usar según el tipo de stat.
+            EnumObjectTypes[] objectTypeSelected = { };
+            switch (newStatType)
+            {
+                case EnumStatType.Entretainment:
+                    objectTypeSelected = ObjectsForFun; break;
+                case EnumStatType.Hunger:
+                    objectTypeSelected = ObjectsForHunger; break;
+                case EnumStatType.Temperature:
+                    objectTypeSelected = ObjectsForTemp; break;
+            }
 
-            //Request newReq = new Reques
+            // Crea nuevo request eligiendo aleatoriamente el objeto que lo satisfacirá (provisional).
+            Request newReq = new Request(newStatType, objectTypeSelected[UnityEngine.Random.Range(0, objectTypeSelected.Length)]);
+            CurrentRequests.Add(newReq);
         }
         return false;
-
     }
 
     // Te recuerda una petición ya realizada, elevando el nivel de impaciencia.
