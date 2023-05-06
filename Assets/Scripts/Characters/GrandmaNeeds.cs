@@ -94,6 +94,19 @@ public class GrandmaNeeds : MonoBehaviour
         if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
     }
 
+    private void SetNeedSprite(EnumObjectTypes objectType) {
+        if (objectType == EnumObjectTypes.Oven) {
+            Debug.Log("Hola");
+            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Food;
+        } else if (objectType == EnumObjectTypes.Tv) {
+            Debug.Log("Adios");
+            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Fun;
+        } else if (objectType == EnumObjectTypes.AC) {
+            Debug.Log("Hasta luego");
+            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Hot;
+        }
+    }
+
     // Intenta a�adir una nueva peticion.
     bool TryAddRequest()
     {
@@ -128,7 +141,7 @@ public class GrandmaNeeds : MonoBehaviour
             Request newReq = new Request(newStatType, objectTypeSelected[UnityEngine.Random.Range(0, objectTypeSelected.Length)]);
             CurrentRequests.Add(newReq);
             GeneratedTextBubble = Instantiate(TextBubble, new Vector3(transform.position.x + 1.0f, transform.position.y + 0.75f, 1.0f), Quaternion.identity);
-            //GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Food;
+            SetNeedSprite(newReq.ObjectType);
 
             SayText($"Abuelita: Quiero que uses {newReq.ObjectType.ToString()}, apresurate");
             return true;
@@ -165,7 +178,6 @@ public class GrandmaNeeds : MonoBehaviour
     void OnEventHappened(EnumEventTypes eventType, EnumObjectTypes objectType)
     {
         if (eventType != EnumEventTypes.ObjectReady) return;
-
         for (int i = 0; i < CurrentRequests.Count; i++)
         {
             if (CurrentRequests[i].ObjectType == objectType)
@@ -177,7 +189,6 @@ public class GrandmaNeeds : MonoBehaviour
                 this.Angryness = this.Angryness * 0.85f;
                 if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
                 Destroy(GeneratedTextBubble);
-
                 CurrentRequests.RemoveAt(i);
                 break;
             }
