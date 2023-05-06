@@ -66,7 +66,19 @@ public class GrandmaNeeds : MonoBehaviour
         //    AngrynessSpeed = 
         //    if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
         //}
-        
+        AddAngrynessFromRequests();
+
+    }
+
+    void AddAngrynessFromRequests()
+    {
+        int accumulatedAttempts = 0;
+        for (int i = 0; i < CurrentRequests.Count; i++)
+        {
+            accumulatedAttempts += CurrentRequests[i].RemindersGiven + 1;
+        }
+        Angryness += accumulatedAttempts * Time.deltaTime;
+        if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
     }
 
     // Intenta a�adir una nueva peticion.
@@ -82,7 +94,7 @@ public class GrandmaNeeds : MonoBehaviour
         }
 
         // A�ade aleatoriamente un statype que no haya pedido ya.
-        if(statTypes.Count > 0)
+        if (statTypes.Count > 0)
         {
             // Elige el tipo de stat que queire satisfacer.
             EnumStatType newStatType = statTypes[UnityEngine.Random.Range(0, statTypes.Count)];
@@ -102,6 +114,8 @@ public class GrandmaNeeds : MonoBehaviour
             // Crea nuevo request eligiendo aleatoriamente el objeto que lo satisfacir� (provisional).
             Request newReq = new Request(newStatType, objectTypeSelected[UnityEngine.Random.Range(0, objectTypeSelected.Length)]);
             CurrentRequests.Add(newReq);
+            SayText($"Abuelita: Quiero que uses {newReq.ObjectType.ToString()}, apresurate");
+            return true;
         }
         return false;
     }
@@ -114,7 +128,7 @@ public class GrandmaNeeds : MonoBehaviour
             Request toRemind = CurrentRequests[UnityEngine.Random.Range(0, CurrentRequests.Count)];
             toRemind.RemindersGiven++;
             GetComponent<Grandma>().GenerateBubble(toRemind.ObjectType);
-            SayText($"Abuelita: Quiero que uses {toRemind.ObjectType.ToString()}");
+            SayText($"Abuelita: Recuerda usar el {toRemind.ObjectType.ToString()}, ya te lo he dicho {toRemind.RemindersGiven} veces");
         }
     }
 
@@ -136,7 +150,7 @@ public class GrandmaNeeds : MonoBehaviour
     {
         if (eventType != EnumEventTypes.ObjectReady) return;
 
-        for(int i = 0; i < CurrentRequests.Count; i++)
+        for (int i = 0; i < CurrentRequests.Count; i++)
         {
             if (CurrentRequests[i].ObjectType == objectType)
             {
@@ -144,7 +158,7 @@ public class GrandmaNeeds : MonoBehaviour
                 Request req = CurrentRequests[i];
 
                 // Placeholder: Reduce un porcentaje fijo de enfado.
-                this.Angryness *= 0.85f;
+                this.Angryness = this.Angryness * 0.85f;
                 if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
 
                 CurrentRequests.RemoveAt(i);

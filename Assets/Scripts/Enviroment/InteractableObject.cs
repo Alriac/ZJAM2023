@@ -24,7 +24,7 @@ public class InteractableObject : MonoBehaviour
     #region Internal variables
 
     [HideInInspector]
-    public double TimeOfSwitch;
+    public float TimeOfSwitch;
     [HideInInspector]
     public bool IsBroken; // Algunos objetos ya no pueden usarse mas.
 
@@ -48,6 +48,8 @@ public class InteractableObject : MonoBehaviour
             // Resetea los tiempos de lanzamiento de los eventos.
             EventsLaunched[i].NextTimeLaunched = Time.time + EventsLaunched[i].LaunchAfterTime;
             EventsLaunched[i].WasLaunched = false;
+            if (EventsLaunched[i].OnSwitchStatus == this.SwitchStatus)
+                Debug.Log($"Corriendo evento {EventsLaunched[i].EventType} de {this.ObjectType}, en {(EventsLaunched[i].NextTimeLaunched - Time.time)} segundos");
         }
         if (GameEvents.Ins.OnEventHappened != null) GameEvents.Ins.OnEventHappened(SwitchStatus ? EnumEventTypes.ObjectSwitchedOn : EnumEventTypes.ObjectSwitchedOff, this.ObjectType);
         if (GameEvents.Ins.OnObjectSwitched != null) GameEvents.Ins.OnObjectSwitched(SwitchStatus, ObjectType, 1);
@@ -65,7 +67,7 @@ public class InteractableObject : MonoBehaviour
     }
 
     [System.Serializable]
-    public struct EventFromObject
+    public class EventFromObject
     {
         public bool OnSwitchStatus; // Determina si el evento se procesa con el objeto encendido o con el objeto apagado.
         public EnumEventTypes EventType; // Tipo de evento a lanzar.
@@ -86,22 +88,22 @@ public class InteractableObject : MonoBehaviour
     {
         if (EventsLaunched != null)
         {
-            double TimeOnStatus = TimeOfSwitch - Time.time;
+            float TimeOnStatus = TimeOfSwitch - Time.time;
 
             for (int i = 0; i < EventsLaunched.Length; i++)
             {
                 EventFromObject ev = EventsLaunched[i];
                 if (
                     ev.OnSwitchStatus == SwitchStatus &&
-                    (!ev.WasLaunched && ev.IsLoopWhileSwitched) &&
-                    ev.NextTimeLaunched <= TimeOnStatus
+                    !ev.WasLaunched && // || ev.IsLoopWhileSwitched) &&
+                    ev.NextTimeLaunched <= Time.time
                     )
                 {
                     ev.WasLaunched = true;
                     ev.NextTimeLaunched = Time.time + ev.LaunchAfterTime;
                     GameEvents.Ins.OnEventHappened(ev.EventType, this.ObjectType);
 
-                    Debug.Log($"Objeto: {gameObject.name}, Evento: {ev.EventType}");
+                    Debug.Log($"Evento {ev.EventType} del objeto {gameObject.name}");
                 }
             }
         }
