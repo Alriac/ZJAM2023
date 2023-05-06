@@ -23,7 +23,7 @@ public class GrandmaNeeds : MonoBehaviour
     public EnumObjectTypes[] ObjectsForFun;
     public EnumObjectTypes[] ObjectsForTemp;
 
-
+    Dictionary<EnumObjectTypes, bool> ObjectStatus = new Dictionary<EnumObjectTypes, bool>();
 
     List<Request> CurrentRequests = new List<Request>();
 
@@ -46,9 +46,14 @@ public class GrandmaNeeds : MonoBehaviour
     private void Awake()
     {
         AllStatTypes = (EnumStatType[])Enum.GetValues(typeof(EnumStatType));
+
+        EnumObjectTypes[] allObjectTypes = (EnumObjectTypes[])Enum.GetValues(typeof(EnumObjectTypes));
+        for (int i = 0; i < allObjectTypes.Length; i++)
+            ObjectStatus.Add(allObjectTypes[i], false);
     }
     void Start()
     {
+        GameEvents.Ins.OnObjectSwitched += OnObjectSwitched;
         GameEvents.Ins.OnEventHappened += OnEventHappened;
     }
 
@@ -136,10 +141,11 @@ public class GrandmaNeeds : MonoBehaviour
 
     #region Recepci�n de Eventos
 
-    /*void ObjectSwitched(bool status, EnumObjectTypes objectType, int times)
+    void OnObjectSwitched(bool status, EnumObjectTypes objectType, int times)
     {
-
-    }*/
+        // TODO: Updatear el valor de ObjectStatus
+        ObjectStatus[objectType] = status;
+    }
 
     void OnEventHappened(EnumEventTypes eventType, EnumObjectTypes objectType)
     {
