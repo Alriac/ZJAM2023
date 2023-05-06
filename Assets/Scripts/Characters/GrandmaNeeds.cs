@@ -7,7 +7,9 @@ public class GrandmaNeeds : MonoBehaviour
 {
 
     public float AngrynessTotal { get { return Angryness; } }
-    float Angryness = 0;
+    float Angryness = 0.0f;
+    float MaxAngryness = 100.0f;
+    float AngrynessSpeed = 1.0f;
 
     public float StatHunger;
     public float StatFun;
@@ -20,6 +22,8 @@ public class GrandmaNeeds : MonoBehaviour
     public EnumObjectTypes[] ObjectsForHunger;
     public EnumObjectTypes[] ObjectsForFun;
     public EnumObjectTypes[] ObjectsForTemp;
+
+
 
     List<Request> CurrentRequests = new List<Request>();
 
@@ -57,10 +61,14 @@ public class GrandmaNeeds : MonoBehaviour
             TimeLastRequest = Time.time;
         }
 
-        // TODO: Aumentar enfado según las peticiones abiertas actualmente.
+        // TODO: Aumentar enfado segun las peticiones abiertas actualmente.
+        //foreach(Request req in CurrentRequests) {
+        //    AngrynessSpeed = 
+        //}
+        
     }
 
-    // Intenta añadir una nueva petición.
+    // Intenta aï¿½adir una nueva peticion.
     bool TryAddRequest()
     {
         if (CurrentRequests.Count >= 3) return false; // Por ahora solo permitimos uno de cada a la vez.
@@ -72,13 +80,13 @@ public class GrandmaNeeds : MonoBehaviour
             statTypes.Remove(CurrentRequests[i].StatType);
         }
 
-        // Añade aleatoriamente un statype que no haya pedido ya.
+        // Aï¿½ade aleatoriamente un statype que no haya pedido ya.
         if(statTypes.Count > 0)
         {
             // Elige el tipo de stat que queire satisfacer.
             EnumStatType newStatType = statTypes[UnityEngine.Random.Range(0, statTypes.Count)];
 
-            // Elige el objeto que necesitas usar según el tipo de stat.
+            // Elige el objeto que necesitas usar segï¿½n el tipo de stat.
             EnumObjectTypes[] objectTypeSelected = { };
             switch (newStatType)
             {
@@ -90,22 +98,21 @@ public class GrandmaNeeds : MonoBehaviour
                     objectTypeSelected = ObjectsForTemp; break;
             }
 
-            // Crea nuevo request eligiendo aleatoriamente el objeto que lo satisfacirá (provisional).
+            // Crea nuevo request eligiendo aleatoriamente el objeto que lo satisfacirï¿½ (provisional).
             Request newReq = new Request(newStatType, objectTypeSelected[UnityEngine.Random.Range(0, objectTypeSelected.Length)]);
             CurrentRequests.Add(newReq);
         }
         return false;
     }
 
-
-
-    // Te recuerda una petición ya realizada, elevando el nivel de impaciencia.
+    // Te recuerda una peticiï¿½n ya realizada, elevando el nivel de impaciencia.
     void RemindCurrentRequest()
     {
         if (CurrentRequests.Count > 0)
         {
             Request toRemind = CurrentRequests[UnityEngine.Random.Range(0, CurrentRequests.Count)];
             toRemind.RemindersGiven++;
+            GetComponent<Grandma>().GenerateBubble(toRemind.ObjectType);
             SayText($"Abuelita: Quiero que uses {toRemind.ObjectType.ToString()}");
         }
     }
@@ -117,7 +124,7 @@ public class GrandmaNeeds : MonoBehaviour
     }
 
 
-    #region Recepción de Eventos
+    #region Recepciï¿½n de Eventos
 
     /*void ObjectSwitched(bool status, EnumObjectTypes objectType, int times)
     {
@@ -149,5 +156,5 @@ public class GrandmaNeeds : MonoBehaviour
         GameEvents.Ins.OnEventHappened -= OnEventHappened;
     }
 
-    #endregion Recepción de Eventos
+    #endregion Recepciï¿½n de Eventos
 }

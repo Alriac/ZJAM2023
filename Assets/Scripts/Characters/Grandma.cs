@@ -19,6 +19,11 @@ public class Grandma : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    public void GenerateBubble(EnumObjectTypes ObjectType) {
+
         if (GeneratedTextBubble == null) {
             if (current_cooldown < cooldown) {
                 current_cooldown += Time.deltaTime;
@@ -28,6 +33,6 @@ public class Grandma : MonoBehaviour
                     current_cooldown = 0;
                 }
             }
-        }
+        }  
     }
 }

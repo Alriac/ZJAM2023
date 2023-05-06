@@ -7,10 +7,12 @@ public class Player : MonoBehaviour
 {
     public float speed = 10.0f;
 
+    Animator a;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        a = GetComponent<Animator>();
     }
 
     // Update is called once per frame
