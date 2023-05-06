@@ -61,11 +61,6 @@ public class GrandmaNeeds : MonoBehaviour
             TimeLastRequest = Time.time;
         }
 
-        // TODO: Aumentar enfado segun las peticiones abiertas actualmente.
-        //foreach(Request req in CurrentRequests) {
-        //    AngrynessSpeed = 
-        //    if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
-        //}
         AddAngrynessFromRequests();
 
     }
