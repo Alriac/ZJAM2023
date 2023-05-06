@@ -9,14 +9,14 @@ public class GameEvents : MonoBehaviour
 
     private void Awake()
     {
-        Ins = this;    
+        Ins = this;
     }
 
     // Start is called before the first frame update
 
     /// <summary>
-    /// Estado on/off del objeto, tipo de objeto, tiempo que lleva en ese estado,
+    /// Estado on/off del objeto, tipo de objeto, veces que se ha lanzado,
     /// </summary>
-    public Action<bool, int> OnObjectSwitched; 
+    public Action<bool, EnumObjectTypes, int> OnObjectSwitched;
 
 }
