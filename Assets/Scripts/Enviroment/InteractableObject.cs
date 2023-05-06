@@ -33,6 +33,7 @@ public class InteractableObject : MonoBehaviour
     #region Events
 
     public Action<bool> OnHighlighted;
+    public Action<bool> OnSwitched;
 
     #endregion Events
 
@@ -61,6 +62,7 @@ public class InteractableObject : MonoBehaviour
         if (GameEvents.Ins.OnEventHappened != null) GameEvents.Ins.OnEventHappened(SwitchStatus ? EnumEventTypes.ObjectSwitchedOn : EnumEventTypes.ObjectSwitchedOff, this.ObjectType);
         if (GameEvents.Ins.OnObjectSwitched != null) GameEvents.Ins.OnObjectSwitched(SwitchStatus, ObjectType, 1);
         Debug.Log($"Objeto: {gameObject.name}, Evento: {(SwitchStatus ? EnumEventTypes.ObjectSwitchedOn : EnumEventTypes.ObjectSwitchedOff)}");
+        if (this.OnSwitched != null) OnSwitched(SwitchStatus);
         return SwitchStatus;
     }
 
