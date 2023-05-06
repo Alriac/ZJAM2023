@@ -18,5 +18,14 @@ public class GameEvents : MonoBehaviour
     /// Estado on/off del objeto, tipo de objeto, veces que se ha lanzado,
     /// </summary>
     public Action<bool, EnumObjectTypes, int> OnObjectSwitched;
+    /// <summary>
+    /// Eventos generales sin datos asociados mas que el tipo de evento.
+    /// </summary>
+    public Action<EnumEventTypes> OnEventHappened;
+
+    // Actualiza la cifra total.
+    public Action<float> AngrynessChangedGranny;
+    public Action<float> AngrynessChangedBadGuy;
+    public Action<float> LifeChangedPlayer;
 
 }
