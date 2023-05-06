@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 9717563}
   - component: {fileID: 9717565}
   - component: {fileID: 9717564}
+  - component: {fileID: 9717566}
   m_Layer: 5
   m_Name: Grandma_bar
   m_TagString: Untagged
@@ -158,9 +159,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -276.80252, y: 135}
+  m_AnchoredPosition: {x: -416.83072, y: 135}
   m_SizeDelta: {x: 280.0564, y: 19.734}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &9717564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +200,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9717562}
   m_CullTransparentMesh: 1
+--- !u!114 &9717566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9717562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3848247f19a5cd4db16215eefa02391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreType: 1
+  MaxScore: 100
+  CurrentScore: 0
 --- !u!1 &51974998
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +303,7 @@ GameObject:
   - component: {fileID: 72204367}
   - component: {fileID: 72204369}
   - component: {fileID: 72204368}
+  - component: {fileID: 72204370}
   m_Layer: 5
   m_Name: Landlord_bar
   m_TagString: Untagged
@@ -311,9 +328,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -276.80252, y: 172.13306}
+  m_AnchoredPosition: {x: -416.83072, y: 172.13306}
   m_SizeDelta: {x: 280.0564, y: 19.734}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &72204368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +369,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72204366}
   m_CullTransparentMesh: 1
+--- !u!114 &72204370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72204366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3848247f19a5cd4db16215eefa02391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreType: 0
+  MaxScore: 100
+  CurrentScore: 0
 --- !u!1 &208750773
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,8 +566,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224458646}
   - component: {fileID: 224458645}
+  - component: {fileID: 224458647}
   m_Layer: 0
-  m_Name: Square (5)
+  m_Name: Cobrador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,7 +616,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8584906, g: 0.54668033, b: 0.54668033, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -608,6 +641,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &224458647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224458644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f402f4fd12ad591449979de3542592ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngrynessLevel: 0
+  AngrynessPerObject:
+  - ObjectType: 0
+    IsOn: 0
+    AngrynessGeneratedPerSecond: 1
+  - ObjectType: 1
+    IsOn: 0
+    AngrynessGeneratedPerSecond: 1
+  - ObjectType: 2
+    IsOn: 0
+    AngrynessGeneratedPerSecond: 1
+  - ObjectType: 3
+    IsOn: 0
+    AngrynessGeneratedPerSecond: 1
+  - ObjectType: 4
+    IsOn: 0
+    AngrynessGeneratedPerSecond: 1
+  - ObjectType: 5
+    IsOn: 0
+    AngrynessGeneratedPerSecond: 1
 --- !u!1 &497723984
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +973,7 @@ GameObject:
   - component: {fileID: 1387971380}
   - component: {fileID: 1387971383}
   - component: {fileID: 1387971382}
+  - component: {fileID: 1387971384}
   m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
@@ -1039,6 +1105,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1387971384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387971379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61325d865a23234794c6d5db17ad1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeOfSwitch: 0
+  Cooldown: 0
+  EventsLaunched: []
+  IsBroken: 0
+  ObjectType: 0
 --- !u!1 &1608759687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,7 +1367,7 @@ GameObject:
   - component: {fileID: 1919625899}
   - component: {fileID: 1919625898}
   m_Layer: 0
-  m_Name: Square (4)
+  m_Name: Abuelita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

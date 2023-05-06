@@ -23,9 +23,7 @@ public class GameEvents : MonoBehaviour
     /// </summary>
     public Action<EnumEventTypes> OnEventHappened;
 
-    // Actualiza la cifra total.
-    public Action<float> AngrynessChangedGranny;
-    public Action<float> AngrynessChangedBadGuy;
-    public Action<float> LifeChangedPlayer;
+    // Actualiza la cifra actual del score seleccionado.
+    public Action<EnumScoreType, float> OnScoreChanged;
 
 }
