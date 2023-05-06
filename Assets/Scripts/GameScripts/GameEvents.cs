@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -31,4 +32,6 @@ public class GameEvents : MonoBehaviour
     public Action<EnumScoreType, float> OnScoreChanged;
 
     public Action OnPlayerActionKey;
+
+    public Action<string, string, FontStyles> OnNewTextForMainDialog;
 }

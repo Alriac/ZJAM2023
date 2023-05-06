@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GrandmaNeeds : MonoBehaviour
@@ -34,6 +35,7 @@ public class GrandmaNeeds : MonoBehaviour
     public string[] TextsForFunReminder;
     public string[] TextsForTemp;
     public string[] TextsForTempReminder;
+    public FontStyles textStyle;
 
     public Sprite Food;
     public Sprite Hot;
@@ -123,6 +125,11 @@ public class GrandmaNeeds : MonoBehaviour
         }
     }
 
+    private void SetDialogText(string newText)
+    {
+        if (GameEvents.Ins.OnNewTextForMainDialog != null) GameEvents.Ins.OnNewTextForMainDialog("Abuelita", newText, textStyle);
+    }
+
     // Intenta a�adir una nueva peticion.
     bool TryAddRequest()
     {
@@ -158,6 +165,7 @@ public class GrandmaNeeds : MonoBehaviour
             CurrentRequests.Add(newReq);
             GeneratedTextBubble = Instantiate(TextBubble, new Vector3(transform.position.x + 1.0f, transform.position.y + 0.75f, 1.0f), Quaternion.identity);
             SetNeedSprite(newReq.ObjectType);
+            SetDialogText(GetTextForRequest(newReq.StatType, false));
 
             SayText($"Abuelita: Quiero que uses {newReq.ObjectType.ToString()}, apresurate");
             return true;
@@ -173,6 +181,7 @@ public class GrandmaNeeds : MonoBehaviour
             Request toRemind = CurrentRequests[UnityEngine.Random.Range(0, CurrentRequests.Count)];
             toRemind.RemindersGiven++;
             SayText($"Abuelita: Recuerda usar el {toRemind.ObjectType.ToString()}, ya te lo he dicho {toRemind.RemindersGiven} veces");
+            SetDialogText(GetTextForRequest(toRemind.StatType, true));
         }
     }
 
