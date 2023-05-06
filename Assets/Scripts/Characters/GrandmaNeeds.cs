@@ -121,6 +121,7 @@ public class GrandmaNeeds : MonoBehaviour
             Request newReq = new Request(newStatType, objectTypeSelected[UnityEngine.Random.Range(0, objectTypeSelected.Length)]);
             CurrentRequests.Add(newReq);
             GeneratedTextBubble = Instantiate(TextBubble, new Vector3(transform.position.x + 1.0f, transform.position.y + 0.75f, 1.0f), Quaternion.identity);
+            //GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Food;
 
             SayText($"Abuelita: Quiero que uses {newReq.ObjectType.ToString()}, apresurate");
             return true;

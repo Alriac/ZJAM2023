@@ -13,7 +13,7 @@ public class InteractableObject : MonoBehaviour
     public bool SwitchStatus { get; private set; } // On/Off
     public bool HighlightStatus { get; private set; } // Highligted?
     [SerializeField]
-    EnumObjectTypes ObjectType;
+    public EnumObjectTypes ObjectType;
     [SerializeField]
     double Cooldown;
     [SerializeField]
@@ -49,7 +49,14 @@ public class InteractableObject : MonoBehaviour
             EventsLaunched[i].NextTimeLaunched = Time.time + EventsLaunched[i].LaunchAfterTime;
             EventsLaunched[i].WasLaunched = false;
             if (EventsLaunched[i].OnSwitchStatus == this.SwitchStatus)
-                Debug.Log($"Corriendo evento {EventsLaunched[i].EventType} de {this.ObjectType}, en {(EventsLaunched[i].NextTimeLaunched - Time.time)} segundos");
+            {
+                if (GameEvents.Ins.OnEventProgrammed != null) GameEvents.Ins.OnEventProgrammed(this.ObjectType, EventsLaunched[i].EventType, (float)EventsLaunched[i].LaunchAfterTime);
+                // Debug.Log($"Corriendo evento {EventsLaunched[i].EventType} de {this.ObjectType}, en {(EventsLaunched[i].NextTimeLaunched - Time.time)} segundos");
+            }
+            else
+            {
+                if (GameEvents.Ins.OnEventCancelled != null) GameEvents.Ins.OnEventCancelled(this.ObjectType, EventsLaunched[i].EventType);
+            }
         }
         if (GameEvents.Ins.OnEventHappened != null) GameEvents.Ins.OnEventHappened(SwitchStatus ? EnumEventTypes.ObjectSwitchedOn : EnumEventTypes.ObjectSwitchedOff, this.ObjectType);
         if (GameEvents.Ins.OnObjectSwitched != null) GameEvents.Ins.OnObjectSwitched(SwitchStatus, ObjectType, 1);

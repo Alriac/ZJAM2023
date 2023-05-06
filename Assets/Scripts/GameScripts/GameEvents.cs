@@ -24,6 +24,9 @@ public class GameEvents : MonoBehaviour
     /// </summary>
     public Action<EnumEventTypes, EnumObjectTypes> OnEventHappened;
 
+    public Action<EnumObjectTypes, EnumEventTypes, float> OnEventProgrammed;
+    public Action<EnumObjectTypes, EnumEventTypes> OnEventCancelled;
+
     // Actualiza la cifra actual del score seleccionado.
     public Action<EnumScoreType, float> OnScoreChanged;
 
