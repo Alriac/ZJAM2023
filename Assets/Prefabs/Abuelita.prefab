@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2352928643886084901
 SpriteRenderer:
@@ -159,9 +159,12 @@ MonoBehaviour:
   Light: {fileID: 21300000, guid: bb1be26d3ee6e0a4ab2701cc4ace4ec2, type: 3}
   Fan_icon: {fileID: 21300000, guid: 821236ea9b8ec514bbff4e03278db206, type: 3}
   Jukebox_icon: {fileID: 21300000, guid: 4c95c92d3d59ef94fadfde3a795e4045, type: 3}
+  Lamp_icon: {fileID: 21300000, guid: 16bf817c8fbb789428ff2eb99c5ffb4b, type: 3}
   Oven_icon: {fileID: 21300000, guid: 2ec91e5b67725d246b3d841e6c22adf3, type: 3}
   Tea_icon: {fileID: 21300000, guid: 2ce3a175dfd4a0c43bebae0ad6978cad, type: 3}
-  TV_icon: {fileID: 21300000, guid: 15acc7f0f21fd1349b3d08dd2573420a, type: 3}
+  TV_icon: {fileID: 21300000, guid: 3875dd5302d37e3439536108d12e718a, type: 3}
+  Vitro_icon: {fileID: 21300000, guid: 6eb8b69a5deb6d240890cb1f453a3697, type: 3}
+  Window_icon: {fileID: 21300000, guid: 42e1269eef09e4f43b4386b963f8e387, type: 3}
 --- !u!95 &7601833330050621048
 Animator:
   serializedVersion: 5

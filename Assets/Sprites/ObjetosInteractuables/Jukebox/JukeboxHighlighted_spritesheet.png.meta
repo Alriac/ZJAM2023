@@ -122,12 +122,12 @@ TextureImporter:
       name: JukeboxHighlighted_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 16
+        width: 17
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -143,12 +143,12 @@ TextureImporter:
       name: JukeboxHighlighted_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 23
+        x: 17
         y: 0
         width: 17
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -164,12 +164,12 @@ TextureImporter:
       name: JukeboxHighlighted_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 44
+        x: 34
         y: 0
         width: 17
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -185,12 +185,12 @@ TextureImporter:
       name: JukeboxHighlighted_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 65
+        x: 51
         y: 0
         width: 17
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,6 +217,7 @@ TextureImporter:
       JukeboxHighlighted_spritesheet_1: 2141565326
       JukeboxHighlighted_spritesheet_2: 716424953
       JukeboxHighlighted_spritesheet_3: 716508923
+      JukeboxHighlighted_spritesheet_4: -1462429966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

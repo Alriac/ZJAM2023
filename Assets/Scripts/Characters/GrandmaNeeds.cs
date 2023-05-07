@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GrandmaNeeds : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class GrandmaNeeds : MonoBehaviour
     public float AngrynessTotal { get { return Angryness; } }
     float Angryness = 0.0f;
     float MaxAngryness = 100.0f;
-    float AngrynessSpeed = 1.0f;
 
     public float StatHunger;
     public float StatFun;
@@ -49,9 +49,15 @@ public class GrandmaNeeds : MonoBehaviour
 
     public Sprite Fan_icon;
     public Sprite Jukebox_icon;
+
+    public Sprite Lamp_icon;
     public Sprite Oven_icon;
     public Sprite Tea_icon;
     public Sprite TV_icon;
+
+    public Sprite Vitro_icon;
+
+    public Sprite Window_icon;
 
 
     Dictionary<EnumObjectTypes, bool> ObjectStatus = new Dictionary<EnumObjectTypes, bool>();
@@ -115,38 +121,60 @@ public class GrandmaNeeds : MonoBehaviour
             accumulatedAttempts += CurrentRequests[i].RemindersGiven + 1;
         }
         Angryness += accumulatedAttempts * Time.deltaTime;
-        if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
+        if (Angryness < MaxAngryness) {
+            if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
+        } else {
+            SceneManager.LoadScene("Muerte");
+        }
     }
 
-    private void SetNeedSprite(EnumObjectTypes objectType, int reminders)
+    private void SetNeedSprite(Request req)
     {
         BubbleText bubble = GeneratedTextBubble.GetComponent<BubbleText>();
         Sprite selectedSprite = null;
 
-        switch (objectType)
-        {
-            case EnumObjectTypes.Fan:
-                selectedSprite = Fan_icon;
-                break;
-            case EnumObjectTypes.Jukebox:
-                selectedSprite = Jukebox_icon;
-                break;
-            case EnumObjectTypes.Oven:
-            case EnumObjectTypes.Tea:
-            case EnumObjectTypes.Vitro:
+        if (UnityEngine.Random.Range(0.0f, 100.0f) > 20.0f) {
+            if (req.StatType == EnumStatType.Hunger) {
                 selectedSprite = Food;
-                break;
-            case EnumObjectTypes.TV:
-            case EnumObjectTypes.Lamp:
+            } else if (req.StatType == EnumStatType.Entretainment) {
                 selectedSprite = Fun;
-                break;
-            case EnumObjectTypes.Window:
-            case EnumObjectTypes.AC:
-                selectedSprite = Hot;
-                break;
+            } else if (req.StatType == EnumStatType.Temperature) {
+                selectedSprite = Cold;
+            }
+        } else {
+            switch (req.ObjectType) {
+                case EnumObjectTypes.Fan:
+                    selectedSprite = Fan_icon;
+                    break;
+                case EnumObjectTypes.Jukebox:
+                    selectedSprite = Jukebox_icon;
+                    break;
+                case EnumObjectTypes.Oven:
+                    selectedSprite = Oven_icon;
+                    break;
+                case EnumObjectTypes.Tea:
+                    selectedSprite = Tea_icon;
+                    break;
+                case EnumObjectTypes.Vitro:
+                    selectedSprite = Vitro_icon;
+                    break;
+                case EnumObjectTypes.TV:
+                    selectedSprite = TV_icon;
+                    break;
+                case EnumObjectTypes.Lamp:
+                    selectedSprite = Lamp_icon;
+                    break;
+                case EnumObjectTypes.Window:
+                    selectedSprite = Window_icon;
+                    break;
+                case EnumObjectTypes.AC:
+                    selectedSprite = Hot;
+                    break;
+            }
         }
 
-        bubble.SetSprite(selectedSprite, reminders);
+
+        bubble.SetSprite(selectedSprite, req.RemindersGiven);
     }
 
     private void SetDialogText(string newText)
@@ -190,7 +218,7 @@ public class GrandmaNeeds : MonoBehaviour
 
             // Bubble & Dialog
             {
-                GenerateBubble(newReq.ObjectType, 0);
+                GenerateBubble(newReq);
                 SetDialogText(GetTextForRequest(newReq.StatType, false));
             }
 
@@ -200,24 +228,24 @@ public class GrandmaNeeds : MonoBehaviour
         return false;
     }
 
-    // Te recuerda una petici�n ya realizada, elevando el nivel de impaciencia.
+    // Te recuerda una peticion ya realizada, elevando el nivel de impaciencia.
     void RemindCurrentRequest()
     {
         if (CurrentRequests.Count > 0)
         {
             Request toRemind = CurrentRequests[UnityEngine.Random.Range(0, CurrentRequests.Count)];
             toRemind.RemindersGiven++;
-            GenerateBubble(toRemind.ObjectType, toRemind.RemindersGiven);
+            GenerateBubble(toRemind);
             SayText($"Abuelita: Recuerda usar el {toRemind.ObjectType.ToString()}, ya te lo he dicho {toRemind.RemindersGiven} veces");
             SetDialogText(GetTextForRequest(toRemind.StatType, true));
         }
     }
 
-    void GenerateBubble(EnumObjectTypes objectType, int reminders)
+    void GenerateBubble(Request req)
     {
         if (GeneratedTextBubble != null) Destroy(GeneratedTextBubble);
-        GeneratedTextBubble = Instantiate(TextBubble, new Vector3(transform.position.x + 1.0f, transform.position.y + 0.75f, 1.0f), Quaternion.identity);
-        SetNeedSprite(objectType, reminders);
+        GeneratedTextBubble = Instantiate(TextBubble, new Vector3(transform.position.x + 1.5f, transform.position.y + 0.75f, -9.0f), Quaternion.identity);
+        SetNeedSprite(req);
     }
 
     string GetTextForRequest(EnumStatType stat, bool isReminder)
