@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     SpriteRenderer sr;
     Rigidbody2D rb;
 
+    public float time = 0.0f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,11 +22,13 @@ public class Player : MonoBehaviour
     {
         a = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        PlayerPrefs.SetFloat("total time played", 0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerPrefs.SetFloat("total time played", PlayerPrefs.GetFloat("total time played") + Time.deltaTime);
         float horizontal_move = Input.GetAxis("Horizontal");
         float vertical_move = Input.GetAxis("Vertical");
         if (horizontal_move == 0)
