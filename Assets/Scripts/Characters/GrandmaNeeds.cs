@@ -43,7 +43,6 @@ public class GrandmaNeeds : MonoBehaviour
     public Sprite Fun;
     public Sprite Light;
 
-
     public Sprite Fan_icon;
     public Sprite Jukebox_icon;
     public Sprite Oven_icon;
