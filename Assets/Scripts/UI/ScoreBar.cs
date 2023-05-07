@@ -6,6 +6,7 @@ public class ScoreBar : MonoBehaviour
 {
     RectTransform ScoreBarUI;
 
+    public bool HorizontalBar;
     public EnumScoreType ScoreType;
     public float MaxScore;
     public float CurrentScore;
@@ -29,9 +30,11 @@ public class ScoreBar : MonoBehaviour
 
     private void ScoreChanged(EnumScoreType scoreType, float newAmount)
     {
-        if (this.ScoreType == scoreType) {
+        if (this.ScoreType == scoreType)
+        {
             CurrentScore = newAmount;
-            ScoreBarUI.localScale = new Vector3(1, +CurrentScore / MaxScore, 1);
+            float newScale = CurrentScore / MaxScore;
+            ScoreBarUI.localScale = new Vector3(HorizontalBar ? newScale : 1f, !HorizontalBar ? newScale : 1f, 1);
         }
     }
 }
