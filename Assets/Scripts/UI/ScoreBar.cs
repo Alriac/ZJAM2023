@@ -29,9 +29,9 @@ public class ScoreBar : MonoBehaviour
 
     private void ScoreChanged(EnumScoreType scoreType, float newAmount)
     {
-        if (this.ScoreType == scoreType && newAmount <= CurrentScore) {
+        if (this.ScoreType == scoreType) {
             CurrentScore = newAmount;
-            ScoreBarUI.localScale = new Vector3(1, -CurrentScore / MaxScore, 1);
+            ScoreBarUI.localScale = new Vector3(1, +CurrentScore / MaxScore, 1);
         }
     }
 }
