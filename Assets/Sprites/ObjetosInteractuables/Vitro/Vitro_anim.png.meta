@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b0f9064140dfd6a4a918da02a33a283a
+guid: 1e47b83958d610740b6cdac74353062b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,85 +119,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: caseroHead_0
+      name: Vitro_anim_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 8
-        width: 36
-        height: 22
+        x: 0
+        y: 0
+        width: 26
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35232b8c0d680714fa3a1a5bfa7f6e42
-      internalID: -1182555989
+      spriteID: e0f00366e3fd9a146ad404515e8b54d7
+      internalID: -2070355949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: caseroHead_1
+      name: Vitro_anim_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 8
-        width: 36
-        height: 22
+        x: 28
+        y: 0
+        width: 26
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e13e6c89b4d9b434bae29f12ddcf71f7
-      internalID: -51893881
+      spriteID: 8557254067309504db73ad310e04bf9b
+      internalID: 1643643375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: caseroHead_2
+      name: Vitro_anim_2
       rect:
         serializedVersion: 2
-        x: 77
-        y: 8
-        width: 36
-        height: 22
+        x: 56
+        y: 0
+        width: 26
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73f1f18c3304f434eabb1f3bceee8eb9
-      internalID: 109269458
+      spriteID: 6f36af2dd9bb83442b83823a8d175f6a
+      internalID: -1293863319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: caseroHead_3
+      name: Vitro_anim_3
       rect:
         serializedVersion: 2
-        x: 115
-        y: 8
-        width: 36
-        height: 22
+        x: 85
+        y: 0
+        width: 26
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 314433892a7ecca4180ae1bb8b244044
-      internalID: -1351661528
+      spriteID: ab754ebe9d156a04c825aeb2ddade74c
+      internalID: 977431322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitro_anim_4
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 0
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba00d785a64bec348ac5c171cc0e083e
+      internalID: -1224728871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitro_anim_5
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d66587711bd5a942b3e97d72878e2e6
+      internalID: 247114696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitro_anim_6
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 0
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41e32bda6fc451f49a6299d3013e394f
+      internalID: -1371487977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitro_anim_7
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8400406e6b612b04fa24efcc9b53052e
+      internalID: -1287902932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitro_anim_8
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8471f0976724be64c92ee5334899c4d1
+      internalID: -1061075562
       vertices: []
       indices: 
       edges: []
@@ -213,10 +318,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      caseroHead_0: -1182555989
-      caseroHead_1: -51893881
-      caseroHead_2: 109269458
-      caseroHead_3: -1351661528
+      Vitro_anim_0: -2070355949
+      Vitro_anim_1: 1643643375
+      Vitro_anim_2: -1293863319
+      Vitro_anim_3: 977431322
+      Vitro_anim_4: -1224728871
+      Vitro_anim_5: 247114696
+      Vitro_anim_6: -1371487977
+      Vitro_anim_7: -1287902932
+      Vitro_anim_8: -1061075562
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

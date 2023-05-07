@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3875dd5302d37e3439536108d12e718a
+guid: 8d48a6510b8b37a48b9e6383aa25bc5d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -117,7 +117,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: grandmaHeadUI_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 7
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab6c5b7a1ea77864d801a7a15857a467
+      internalID: 1971027383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandmaHeadUI_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 7
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf072546f7403654d97f73acbd5238cc
+      internalID: -282103207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandmaHeadUI_2
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 7
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e44266994748f4ea1d51ee68af48cf
+      internalID: -62122207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandmaHeadUI_3
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 7
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fb2547c6583d1a4f8a09ef61ad5fba5
+      internalID: -586196799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -128,7 +212,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      grandmaHeadUI_0: 1971027383
+      grandmaHeadUI_1: -282103207
+      grandmaHeadUI_2: -62122207
+      grandmaHeadUI_3: -586196799
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

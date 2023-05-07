@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b0f9064140dfd6a4a918da02a33a283a
+guid: ea64fd28e50345e499c46450f64bce1e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: caseroHead_0
+      name: Vitroh_anim_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 8
-        width: 36
-        height: 22
+        x: 0
+        y: 0
+        width: 28
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35232b8c0d680714fa3a1a5bfa7f6e42
-      internalID: -1182555989
+      spriteID: 80fdf48cef12e2c4cbd91ab72681d233
+      internalID: -1495469096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: caseroHead_1
+      name: Vitroh_anim_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 8
-        width: 36
-        height: 22
+        x: 28
+        y: 0
+        width: 28
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e13e6c89b4d9b434bae29f12ddcf71f7
-      internalID: -51893881
+      spriteID: e6006a2093631614485e8d511ec9dfb5
+      internalID: -112889638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: caseroHead_2
+      name: Vitroh_anim_2
       rect:
         serializedVersion: 2
-        x: 77
-        y: 8
-        width: 36
-        height: 22
+        x: 56
+        y: 0
+        width: 28
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73f1f18c3304f434eabb1f3bceee8eb9
-      internalID: 109269458
+      spriteID: 29d41228d2da0d9489d6b30d6b1db49c
+      internalID: 728947089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: caseroHead_3
+      name: Vitroh_anim_3
       rect:
         serializedVersion: 2
-        x: 115
-        y: 8
-        width: 36
-        height: 22
+        x: 84
+        y: 0
+        width: 28
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,8 +196,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 314433892a7ecca4180ae1bb8b244044
-      internalID: -1351661528
+      spriteID: 38feea888c11deb478fdd5c4b9e39ea7
+      internalID: 1892849487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitroh_anim_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b116475f11d5d645938393bb8a31e7d
+      internalID: 1081628607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitroh_anim_5
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d2023f95c9042498238f92ac8893ef
+      internalID: -481020584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitroh_anim_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d0d24f479577e47bdda23a2e6d2c49
+      internalID: -99382222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitroh_anim_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 0
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7bf83dbb1389b2478cfe23cb628b92d
+      internalID: -1958776494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vitroh_anim_8
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12a229c1f65efdf4cae742e29dd8035b
+      internalID: -764671833
       vertices: []
       indices: 
       edges: []
@@ -213,10 +318,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      caseroHead_0: -1182555989
-      caseroHead_1: -51893881
-      caseroHead_2: 109269458
-      caseroHead_3: -1351661528
+      Vitroh_anim_0: -1495469096
+      Vitroh_anim_1: -112889638
+      Vitroh_anim_2: 728947089
+      Vitroh_anim_3: 1892849487
+      Vitroh_anim_4: 1081628607
+      Vitroh_anim_5: -481020584
+      Vitroh_anim_6: -99382222
+      Vitroh_anim_7: -1958776494
+      Vitroh_anim_8: -764671833
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
