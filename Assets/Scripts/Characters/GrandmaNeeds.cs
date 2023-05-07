@@ -213,6 +213,7 @@ public class GrandmaNeeds : MonoBehaviour
 
     void GenerateBubble(EnumObjectTypes objectType, int reminders)
     {
+        if (GeneratedTextBubble != null) Destroy(GeneratedTextBubble);
         GeneratedTextBubble = Instantiate(TextBubble, new Vector3(transform.position.x + 1.0f, transform.position.y + 0.75f, 1.0f), Quaternion.identity);
         SetNeedSprite(objectType, reminders);
     }
