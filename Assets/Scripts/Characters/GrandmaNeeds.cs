@@ -21,19 +21,23 @@ public class GrandmaNeeds : MonoBehaviour
     public GameObject TextBubble;
     public GameObject GeneratedTextBubble;
 
-    float TimeLastRequest;
+    public int MaxConcurrentRequests; // Maximo 3, uno por cada tipo de stat.
     public float MinTimeBetweenRequests;
-    public float MinTimeBetweenReminders;
+    public float MaxTimeBetweenRequests;
+    float TimeNextRequest;
 
     public EnumObjectTypes[] ObjectsForHunger;
     public EnumObjectTypes[] ObjectsForFun;
     public EnumObjectTypes[] ObjectsForTemp;
 
     public string[] TextsForHunger;
+    [HideInInspector]
     public string[] TextsForHungerReminder;
     public string[] TextsForFun;
+    [HideInInspector]
     public string[] TextsForFunReminder;
     public string[] TextsForTemp;
+    [HideInInspector]
     public string[] TextsForTempReminder;
     public FontStyles textStyle;
 
@@ -48,25 +52,6 @@ public class GrandmaNeeds : MonoBehaviour
     public Sprite Oven_icon;
     public Sprite Tea_icon;
     public Sprite TV_icon;
-
-    private void SetNeedSprite(EnumObjectTypes objectType)
-    {
-        if (objectType == EnumObjectTypes.Fan) {
-            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Fan_icon;
-        } else if (objectType == EnumObjectTypes.Jukebox) {
-            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Jukebox_icon;
-        } else if (objectType == EnumObjectTypes.Oven) {
-            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Food;
-        }
-        else if (objectType == EnumObjectTypes.TV)
-        {
-            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Fun;
-        }
-        else if (objectType == EnumObjectTypes.AC)
-        {
-            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Hot;
-        }
-    }
 
 
     Dictionary<EnumObjectTypes, bool> ObjectStatus = new Dictionary<EnumObjectTypes, bool>();
@@ -103,21 +88,19 @@ public class GrandmaNeeds : MonoBehaviour
         GameEvents.Ins.OnObjectSwitched += OnObjectSwitched;
         GameEvents.Ins.OnEventHappened += OnEventHappened;
         current_cooldown = UnityEngine.Random.Range(0.0f, 200.0f) / 100;
+
+        TextsForHungerReminder = TextsForHunger;
+        TextsForFunReminder = TextsForFun;
+        TextsForTempReminder = TextsForTemp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GeneratedTextBubble == null)
-        { // Quitar cuando metamos todos los tipos.
-            if (TimeLastRequest + MinTimeBetweenReminders < Time.time)
-            {
-                if (UnityEngine.Random.Range(0.0f, 100.0f) > 60.0f)
-                {
-                    if (!TryAddRequest()) RemindCurrentRequest();
-                    TimeLastRequest = Time.time;
-                }
-            }
+        if (TimeNextRequest < Time.time)
+        {
+            if (!TryAddRequest()) RemindCurrentRequest();
+            TimeNextRequest = Time.time + Mathf.Lerp(MinTimeBetweenRequests, MaxTimeBetweenRequests, UnityEngine.Random.Range(0f, 1f));
         }
         AddAngrynessFromRequests();
     }
@@ -133,6 +116,37 @@ public class GrandmaNeeds : MonoBehaviour
         if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
     }
 
+    private void SetNeedSprite(EnumObjectTypes objectType, int reminders)
+    {
+        BubbleText bubble = GeneratedTextBubble.GetComponent<BubbleText>();
+        Sprite selectedSprite = null;
+
+        switch (objectType)
+        {
+            case EnumObjectTypes.Fan:
+                selectedSprite = Fan_icon;
+                break;
+            case EnumObjectTypes.Jukebox:
+                selectedSprite = Jukebox_icon;
+                break;
+            case EnumObjectTypes.Oven:
+            case EnumObjectTypes.Tea:
+            case EnumObjectTypes.Vitro:
+                selectedSprite = Food;
+                break;
+            case EnumObjectTypes.TV:
+            case EnumObjectTypes.Lamp:
+                selectedSprite = Fun;
+                break;
+            case EnumObjectTypes.Window:
+            case EnumObjectTypes.AC:
+                selectedSprite = Hot;
+                break;
+        }
+
+        bubble.SetSprite(selectedSprite, reminders);
+    }
+
     private void SetDialogText(string newText)
     {
         if (GameEvents.Ins.OnNewTextForMainDialog != null) GameEvents.Ins.OnNewTextForMainDialog("Abuelita", newText, textStyle);
@@ -141,7 +155,7 @@ public class GrandmaNeeds : MonoBehaviour
     // Intenta a�adir una nueva peticion.
     bool TryAddRequest()
     {
-        if (CurrentRequests.Count >= 3) return false; // Por ahora solo permitimos uno de cada a la vez.
+        if (CurrentRequests.Count >= MaxConcurrentRequests) return false; // Por ahora solo permitimos uno de cada a la vez.
 
         // Comprueba que stattypes no han sido ya pedidos.
         List<EnumStatType> statTypes = new List<EnumStatType>(AllStatTypes);
@@ -171,9 +185,12 @@ public class GrandmaNeeds : MonoBehaviour
             // Crea nuevo request eligiendo aleatoriamente el objeto que lo satisfacira (provisional).
             Request newReq = new Request(newStatType, objectTypeSelected[UnityEngine.Random.Range(0, objectTypeSelected.Length)]);
             CurrentRequests.Add(newReq);
-            GeneratedTextBubble = Instantiate(TextBubble, new Vector3(transform.position.x + 1.0f, transform.position.y + 0.75f, 1.0f), Quaternion.identity);
-            SetNeedSprite(newReq.ObjectType);
-            SetDialogText(GetTextForRequest(newReq.StatType, false));
+
+            // Bubble & Dialog
+            {
+                GenerateBubble(newReq.ObjectType, 0);
+                SetDialogText(GetTextForRequest(newReq.StatType, false));
+            }
 
             SayText($"Abuelita: Quiero que uses {newReq.ObjectType.ToString()}, apresurate");
             return true;
@@ -188,9 +205,16 @@ public class GrandmaNeeds : MonoBehaviour
         {
             Request toRemind = CurrentRequests[UnityEngine.Random.Range(0, CurrentRequests.Count)];
             toRemind.RemindersGiven++;
+            GenerateBubble(toRemind.ObjectType, toRemind.RemindersGiven);
             SayText($"Abuelita: Recuerda usar el {toRemind.ObjectType.ToString()}, ya te lo he dicho {toRemind.RemindersGiven} veces");
             SetDialogText(GetTextForRequest(toRemind.StatType, true));
         }
+    }
+
+    void GenerateBubble(EnumObjectTypes objectType, int reminders)
+    {
+        GeneratedTextBubble = Instantiate(TextBubble, new Vector3(transform.position.x + 1.0f, transform.position.y + 0.75f, 1.0f), Quaternion.identity);
+        SetNeedSprite(objectType, reminders);
     }
 
     string GetTextForRequest(EnumStatType stat, bool isReminder)
@@ -229,9 +253,12 @@ public class GrandmaNeeds : MonoBehaviour
     void OnEventHappened(EnumEventTypes eventType, EnumObjectTypes objectType)
     {
         if (eventType != EnumEventTypes.ObjectReady) return;
+
+        EnumStatType statType = GetStatTypeFromObjectType(objectType);
+
         for (int i = 0; i < CurrentRequests.Count; i++)
         {
-            if (CurrentRequests[i].ObjectType == objectType)
+            if (CurrentRequests[i].StatType == statType)
             {
                 // Reducir enfado por objetivo completado.
                 Request req = CurrentRequests[i];
@@ -244,6 +271,18 @@ public class GrandmaNeeds : MonoBehaviour
                 break;
             }
         }
+    }
+
+    EnumStatType GetStatTypeFromObjectType(EnumObjectTypes objectType)
+    {
+        for (int i = 0; i < ObjectsForFun.Length; i++)
+            if (ObjectsForFun[i] == objectType) return EnumStatType.Entretainment;
+        for (int i = 0; i < ObjectsForTemp.Length; i++)
+            if (ObjectsForTemp[i] == objectType) return EnumStatType.Temperature;
+        for (int i = 0; i < ObjectsForHunger.Length; i++)
+            if (ObjectsForHunger[i] == objectType) return EnumStatType.Hunger;
+
+        return default(EnumStatType);
     }
 
     private void OnDestroy()

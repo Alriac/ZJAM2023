@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class BubbleText : MonoBehaviour
 {
-    int sense  = 1;
+    int sense = 1;
     public float speed = 1.5f;
     public float current_offset;
     public float offset = 0.5f;
     public float current_lifetime;
     public float lifetime = 1.0f;
 
-    public GameObject need_container;
+    public SpriteRenderer need_container;
+    public GameObject Reminder1;
+    public GameObject Reminder2;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +26,28 @@ public class BubbleText : MonoBehaviour
     void Update()
     {
         //if (current_lifetime < lifetime) {
-            current_lifetime += Time.deltaTime;
-            current_offset += speed * Time.deltaTime;
-            if (current_offset > offset) {
-                sense *= -1;
-                current_offset = 0;
-            } else {
-                transform.position += new Vector3(0.0f, speed * sense, 0.0f) * Time.deltaTime;
-            }
+        current_lifetime += Time.deltaTime;
+        current_offset += speed * Time.deltaTime;
+        if (current_offset > offset)
+        {
+            sense *= -1;
+            current_offset = 0;
+        }
+        else
+        {
+            transform.position += new Vector3(0.0f, speed * sense, 0.0f) * Time.deltaTime;
+        }
         //} else {
         //    Destroy(gameObject);
         //    current_lifetime = 0.0f;
         //}
+    }
+
+    public void SetSprite(Sprite spr, int reminders)
+    {
+        need_container.sprite = spr;
+
+        Reminder1.SetActive(reminders > 0);
+        Reminder2.SetActive(reminders > 1);
     }
 }

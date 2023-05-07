@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2352928643886084901
 SpriteRenderer:
@@ -105,16 +105,51 @@ MonoBehaviour:
   cooldown: 3
   TextBubble: {fileID: 8363394955997831004, guid: cc17f593ec4d2014dadbd8e5162b92b6, type: 3}
   GeneratedTextBubble: {fileID: 0}
+  MaxConcurrentRequests: 2
   MinTimeBetweenRequests: 3.5
-  MinTimeBetweenReminders: 3.5
-  ObjectsForHunger: 00000000
-  ObjectsForFun: 02000000
-  ObjectsForTemp: 04000000
-  TextsForHunger: []
+  MaxTimeBetweenRequests: 6
+  ObjectsForHunger: 050000000700000004000000
+  ObjectsForFun: 030000000200000006000000
+  ObjectsForTemp: 080000000100000000000000
+  TextsForHunger:
+  - "\xA1Fr\xEDeme un huevo!"
+  - "Ahora mismo me comer\xEDa un jabal\xED enterito"
+  - "Hija, que la dentadura nueva no est\xE1 de adorno"
+  - "Con la barriga vac\xEDa, ninguno muestra alegr\xEDa"
+  - "Un pastel al d\xEDa, mantiene al m\xE9dico en la lejan\xEDa."
+  - "\xA1A buen hambre no hay pan duro nena!"
+  - "Me comer\xEDa una vaca viva"
+  - Cuando tengo hambre me pongo de un humor de perros
+  - "Hija a mi edad no conviene tenerme a dieta \xBFsabes?"
+  - Me apetece un piscolabis
+  - "Tengo m\xE1s hambre que un rat\xF3n de iglesia"
   TextsForHungerReminder: []
-  TextsForFun: []
+  TextsForFun:
+  - Creo que ya es la hora de la telenovela que me gusta
+  - "Ay hija m\xEDa, qu\xE9 mayor es una..."
+  - "\xBFQu\xE9 andar\xE1 haciendo la Merche ahora?"
+  - "No hay nada m\xE1s aburrido que ver crecer las telara\xF1as."
+  - Dicen que el aburrimiento es la enfermedad de las personas felices. Que chorrada!
+  - Pero que rooooollo!
+  - "\xBFTe he comentado ya que me aburro? \xA1Por que me aburro!"
+  - La gente de mi edad tiene que estar entretenida, sino el cerebro se reblandece
+  - "Me apetece entretenerme un poco, que eres m\xE1s sosa que la sopa"
+  - "Me subo por las paredes, \xBFno hay nada que hacer por aqu\xED?"
+  - En mis tiempos cuando me aburria jugaba al pilla pilla con mis amigos, pero claro
+    ahor con la reuma...
   TextsForFunReminder: []
-  TextsForTemp: []
+  TextsForTemp:
+  - "Me est\xE1n entrando unos calores..."
+  - "Esto parece el S\xE1hara ese de las pel\xEDculas"
+  - Ponle un poco de fresco a la yaya anda.
+  - "\xA1Pero esto es un piso o un horno nena!"
+  - "\xA1Me estoy asando como un pollo!"
+  - "En verano hasta el m\xE1s seco suda."
+  - "Calor de mayo, valor del a\xF1o nieta."
+  - "\xA1Pero que taca\xF1a eres! \xBFNo ves que me estoy asando?"
+  - En mis tiempos no pasabamos esta calor
+  - "\xA1Madre m\xEDa! \xBFQue quieres matarme de calor?"
+  - Las calores no son buenos a mi edad
   TextsForTempReminder: []
   textStyle: 0
   Food: {fileID: 21300000, guid: add7e13907a7eae4981a32df6c099975, type: 3}
@@ -126,6 +161,7 @@ MonoBehaviour:
   Jukebox_icon: {fileID: 21300000, guid: 4c95c92d3d59ef94fadfde3a795e4045, type: 3}
   Oven_icon: {fileID: 21300000, guid: 2ec91e5b67725d246b3d841e6c22adf3, type: 3}
   Tea_icon: {fileID: 21300000, guid: 2ce3a175dfd4a0c43bebae0ad6978cad, type: 3}
+  TV_icon: {fileID: 21300000, guid: 15acc7f0f21fd1349b3d08dd2573420a, type: 3}
 --- !u!95 &7601833330050621048
 Animator:
   serializedVersion: 5
