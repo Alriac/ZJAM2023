@@ -92,6 +92,8 @@ public class GrandmaNeeds : MonoBehaviour
         TextsForHungerReminder = TextsForHunger;
         TextsForFunReminder = TextsForFun;
         TextsForTempReminder = TextsForTemp;
+
+        TimeNextRequest = Time.time + 1;
     }
 
     // Update is called once per frame
