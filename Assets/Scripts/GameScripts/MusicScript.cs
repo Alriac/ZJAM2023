@@ -61,6 +61,8 @@ public class MusicScript : MonoBehaviour
         yield return new WaitForSeconds(secondsTillAudioEnd);
 
         source.clip = AudioClips[CurrentAudioIndex].clip;
+        source.Play();
+        source.loop = true;
     }
 
     int GetNewAudioIndex()
@@ -75,7 +77,8 @@ public class MusicScript : MonoBehaviour
 
     void OnScoreChanged(EnumScoreType scoreType, float newAmount)
     {
-
+        if (scoreType == EnumScoreType.GrannyAnger) grandmaScore = newAmount;
+        if (scoreType == EnumScoreType.MoneyDesperatePersonAngryness) landlorScore = newAmount;
     }
 
     void OnObjectSwitched(bool status, EnumObjectTypes objectType, int times)
