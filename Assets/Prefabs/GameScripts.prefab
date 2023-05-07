@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4982616283201720811}
   - component: {fileID: 4957446112193616518}
   - component: {fileID: 7486559282561940315}
+  - component: {fileID: 4623839620688279031}
   m_Layer: 0
   m_Name: GameScripts
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4982616283201720811
 MonoBehaviour:
@@ -68,7 +69,7 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 74a1d0c00e2fa0c4a9c8f04e29569b21, type: 3}
     fromDangerLevel: 52
   - clip: {fileID: 8300000, guid: 52d977e5e69542346a0bfc5a55f9a517, type: 3}
-    fromDangerLevel: 64
+    fromDangerLevel: 100
   MinIntervalMusicChange: 0
 --- !u!82 &7486559282561940315
 AudioSource:
@@ -166,3 +167,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4623839620688279031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570288287159668497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c26ca3e5860e1648b0a5ffe575ff8da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxAngryness: 100

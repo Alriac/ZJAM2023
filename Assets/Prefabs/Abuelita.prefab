@@ -154,7 +154,7 @@ MonoBehaviour:
   textStyle: 0
   Food: {fileID: 21300000, guid: add7e13907a7eae4981a32df6c099975, type: 3}
   Hot: {fileID: 21300000, guid: 732206f972428454e9646f7dba1bbe5b, type: 3}
-  Cold: {fileID: 21300000, guid: 10fcd09e22c0e1c458bc2c0473323131, type: 3}
+  Cold: {fileID: 21300000, guid: 732206f972428454e9646f7dba1bbe5b, type: 3}
   Fun: {fileID: 21300000, guid: 15acc7f0f21fd1349b3d08dd2573420a, type: 3}
   Light: {fileID: 21300000, guid: bb1be26d3ee6e0a4ab2701cc4ace4ec2, type: 3}
   Fan_icon: {fileID: 21300000, guid: 821236ea9b8ec514bbff4e03278db206, type: 3}

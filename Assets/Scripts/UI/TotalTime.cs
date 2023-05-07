@@ -19,6 +19,6 @@ public class TotalTime : MonoBehaviour
     void Update()
     {
         float numOfSecs = PlayerPrefs.GetFloat("total time played");
-        text_component.SetText("{0} h : {1} m : {2} s", TimeSpan.FromSeconds(numOfSecs).Hours, TimeSpan.FromSeconds(numOfSecs).Minutes, TimeSpan.FromSeconds(numOfSecs).Seconds);
+        text_component.SetText("{1} m : {2} s", TimeSpan.FromSeconds(numOfSecs).Minutes, TimeSpan.FromSeconds(numOfSecs).Seconds);
     }
 }
