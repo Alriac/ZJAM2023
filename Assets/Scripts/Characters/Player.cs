@@ -37,10 +37,10 @@ public class Player : MonoBehaviour
         }
         if (vertical_move == 0) {
             a.SetBool("VerWalkDown", false);
-            //a.SetBool("VerWalkUp", false);
+            a.SetBool("VerWalkUp", false);
         } else {
             if (vertical_move > 0) {
-                //a.SetBool("VerWalkUp", true);
+                a.SetBool("VerWalkUp", true);
             } else {
                 a.SetBool("VerWalkDown", true);
             }

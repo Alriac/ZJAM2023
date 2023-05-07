@@ -42,6 +42,34 @@ public class GrandmaNeeds : MonoBehaviour
     public Sprite Cold;
     public Sprite Fun;
     public Sprite Light;
+
+
+    public Sprite Fan_icon;
+    public Sprite Jukebox_icon;
+    public Sprite Oven_icon;
+    public Sprite Tea_icon;
+    public Sprite TV_icon;
+
+    private void SetNeedSprite(EnumObjectTypes objectType)
+    {
+        if (objectType == EnumObjectTypes.Fan) {
+            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Fan_icon;
+        } else if (objectType == EnumObjectTypes.Jukebox) {
+            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Jukebox_icon;
+        } else if (objectType == EnumObjectTypes.Oven) {
+            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Food;
+        }
+        else if (objectType == EnumObjectTypes.Tv)
+        {
+            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Fun;
+        }
+        else if (objectType == EnumObjectTypes.AC)
+        {
+            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Hot;
+        }
+    }
+
+
     Dictionary<EnumObjectTypes, bool> ObjectStatus = new Dictionary<EnumObjectTypes, bool>();
 
 
@@ -104,25 +132,6 @@ public class GrandmaNeeds : MonoBehaviour
         }
         Angryness += accumulatedAttempts * Time.deltaTime;
         if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
-    }
-
-    private void SetNeedSprite(EnumObjectTypes objectType)
-    {
-        if (objectType == EnumObjectTypes.Oven)
-        {
-            Debug.Log("Hola");
-            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Food;
-        }
-        else if (objectType == EnumObjectTypes.Tv)
-        {
-            Debug.Log("Adios");
-            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Fun;
-        }
-        else if (objectType == EnumObjectTypes.AC)
-        {
-            Debug.Log("Hasta luego");
-            GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Hot;
-        }
     }
 
     private void SetDialogText(string newText)

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3261632754624136257
+--- !u!1 &8796556180208876002
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3868757649570395248}
-  - component: {fileID: 2375097648940490115}
-  - component: {fileID: 8629579919252338878}
-  - component: {fileID: 4237951451926260410}
+  - component: {fileID: 7846448829889472442}
+  - component: {fileID: 2352928643886084901}
+  - component: {fileID: 6535100033106330066}
+  - component: {fileID: 7601833330050621048}
   m_Layer: 0
   m_Name: Abuelita
   m_TagString: Untagged
@@ -19,28 +19,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3868757649570395248
+--- !u!4 &7846448829889472442
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3261632754624136257}
+  m_GameObject: {fileID: 8796556180208876002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.33, y: -3.17, z: 5}
   m_LocalScale: {x: 6.348809, y: 6.348809, z: 6.348809}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2375097648940490115
+--- !u!212 &2352928643886084901
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3261632754624136257}
+  m_GameObject: {fileID: 8796556180208876002}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -86,13 +86,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8629579919252338878
+--- !u!114 &6535100033106330066
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3261632754624136257}
+  m_GameObject: {fileID: 8796556180208876002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8ecac968c6d83a44b3169a9d24230aa, type: 3}
@@ -110,34 +110,30 @@ MonoBehaviour:
   ObjectsForHunger: 00000000
   ObjectsForFun: 02000000
   ObjectsForTemp: 04000000
-  TextsForHunger:
-  - Tengo hambre, alimentame
-  - "Me comer\xEDa un caballo"
-  TextsForHungerReminder:
-  - "\xBFD\xF3nde esta mi comida?"
-  - "\xA1Mi est\xF3mago ruge!"
-  TextsForFun:
-  - Anda bonica haz que no me aburra
-  TextsForFunReminder:
-  - "\xA1ME ABURRO!"
-  - "\xA1No tengo nada que hacer!"
-  TextsForTemp:
-  - "\xBFNo hace calor?"
-  TextsForTempReminder:
-  - Apresurate en poner el cacharro del aire
-  Food: {fileID: 21300000, guid: 6eb8b69a5deb6d240890cb1f453a3697, type: 3}
+  TextsForHunger: []
+  TextsForHungerReminder: []
+  TextsForFun: []
+  TextsForFunReminder: []
+  TextsForTemp: []
+  TextsForTempReminder: []
+  textStyle: 0
+  Food: {fileID: 21300000, guid: add7e13907a7eae4981a32df6c099975, type: 3}
   Hot: {fileID: 21300000, guid: 732206f972428454e9646f7dba1bbe5b, type: 3}
-  Cold: {fileID: 21300000, guid: 4e07400b9472f004bbd25736fe84037f, type: 3}
-  Fun: {fileID: 21300000, guid: 5db54f5cc2767f94289676e81b110570, type: 3}
+  Cold: {fileID: 21300000, guid: 10fcd09e22c0e1c458bc2c0473323131, type: 3}
+  Fun: {fileID: 21300000, guid: 15acc7f0f21fd1349b3d08dd2573420a, type: 3}
   Light: {fileID: 21300000, guid: bb1be26d3ee6e0a4ab2701cc4ace4ec2, type: 3}
---- !u!95 &4237951451926260410
+  Fan_icon: {fileID: 21300000, guid: 821236ea9b8ec514bbff4e03278db206, type: 3}
+  Jukebox_icon: {fileID: 21300000, guid: 4c95c92d3d59ef94fadfde3a795e4045, type: 3}
+  Oven_icon: {fileID: 21300000, guid: 2ec91e5b67725d246b3d841e6c22adf3, type: 3}
+  Tea_icon: {fileID: 21300000, guid: 2ce3a175dfd4a0c43bebae0ad6978cad, type: 3}
+--- !u!95 &7601833330050621048
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3261632754624136257}
+  m_GameObject: {fileID: 8796556180208876002}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e98703309a3fabd408dc9b8dac69521c, type: 2}
