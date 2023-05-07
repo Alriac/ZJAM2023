@@ -8,10 +8,12 @@ public class SoundScript : MonoBehaviour
     AudioSource source;
 
     public EnumEventTypes ForEventType;
-    public EnumObjectTypes ForStatType;
+    //public EnumStatType ForStatType;
     public EnumObjectTypes ForObjectType;
     public bool IgnoreObjectType;
     public bool IgnoreStatType;
+
+   
 
     private void Awake()
     {
@@ -27,8 +29,13 @@ public class SoundScript : MonoBehaviour
                 GameEvents.Ins.OnObjectSwitched += OnObjectSwitchedOff; break;
             case EnumEventTypes.ObjectSwitchedOn:
                 GameEvents.Ins.OnObjectSwitched += OnObjectSwitchedOn; break;
+            case EnumEventTypes.ObjectSwitched:
+                GameEvents.Ins.OnObjectSwitched += OnObjectSwitched; break;
                 // TODO: Registrar mas tipos de eventos para los sonidos que tengamos y añadirlos aqui.
         }
+
+        if(ForEventType == EnumEventTypes.ObjectSwitchedOn)
+            GameEvents.Ins.OnObjectSwitched += TurnOffSound;
     }
 
     void OnObjectObjectReady(EnumEventTypes etype, EnumObjectTypes oType)
@@ -49,6 +56,21 @@ public class SoundScript : MonoBehaviour
     void OnObjectSwitchedOn(bool newStatus, EnumObjectTypes oType, int times)
     {
         if (!newStatus) return;
+        if (oType != ForObjectType && !IgnoreObjectType) return;
+
+        source.Play();
+    }
+
+    void TurnOffSound(bool newStatus, EnumObjectTypes oType, int times)
+    {
+        if (newStatus) return;
+        if (oType != ForObjectType && !IgnoreObjectType) return;
+
+        source.Stop();
+    }
+
+    void OnObjectSwitched(bool newStatus, EnumObjectTypes oType, int times)
+    {
         if (oType != ForObjectType && !IgnoreObjectType) return;
 
         source.Play();
