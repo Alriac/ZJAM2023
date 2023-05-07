@@ -1,12 +1,13 @@
 public enum EnumObjectTypes
 {
     AC, // Aire Acondicionado
-    Calefactor,
+    //Calefactor,
     Fan,
     Jukebox,
     Lamp,
     Oven,
     Tea,
     TV,
+    Vitro,
     Window
 }

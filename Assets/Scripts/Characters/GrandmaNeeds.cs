@@ -58,7 +58,7 @@ public class GrandmaNeeds : MonoBehaviour
         } else if (objectType == EnumObjectTypes.Oven) {
             GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Food;
         }
-        else if (objectType == EnumObjectTypes.Tv)
+        else if (objectType == EnumObjectTypes.TV)
         {
             GeneratedTextBubble.GetComponent<BubbleText>().need_container.GetComponent<SpriteRenderer>().sprite = Fun;
         }
