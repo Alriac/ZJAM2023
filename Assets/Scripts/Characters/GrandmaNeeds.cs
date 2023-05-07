@@ -179,7 +179,7 @@ public class GrandmaNeeds : MonoBehaviour
 
     private void SetDialogText(string newText)
     {
-        if (GameEvents.Ins.OnNewTextForMainDialog != null) GameEvents.Ins.OnNewTextForMainDialog("Abuelita", newText, textStyle);
+        if (GameEvents.Ins.OnNewTextForMainDialog != null) GameEvents.Ins.OnNewTextForMainDialog(string.Empty, newText, textStyle);
     }
 
     // Intenta a�adir una nueva peticion.
