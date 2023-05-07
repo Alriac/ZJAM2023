@@ -123,8 +123,6 @@ public class GrandmaNeeds : MonoBehaviour
         Angryness += accumulatedAttempts * Time.deltaTime;
         if (Angryness < MaxAngryness) {
             if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
-        } else {
-            SceneManager.LoadScene("Muerte");
         }
     }
 
