@@ -1430,12 +1430,6 @@ MonoBehaviour:
     NextTimeLaunched: 0
     WasLaunched: 0
     IsLoopWhileSwitched: 0
-  - OnSwitchStatus: 1
-    EventType: 1
-    LaunchAfterTime: 10
-    NextTimeLaunched: 0
-    WasLaunched: 0
-    IsLoopWhileSwitched: 0
   TimeOfSwitch: 0
   IsBroken: 0
 --- !u!114 &312133027
@@ -4914,7 +4908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1107421995
 Animator:
   serializedVersion: 5
@@ -4944,7 +4938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107421994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.24, y: -0.13, z: 0}
+  m_LocalPosition: {x: -2.24, y: -3.6, z: 0}
   m_LocalScale: {x: 3.7, y: 3.7, z: 3.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5016,7 +5010,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {fileID: 0}
-  window: {fileID: 312133023}
 --- !u!4 &1147178040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7411059288888101535, guid: e43fc120eb09af048b496ca4cd1f0543, type: 3}
@@ -7735,6 +7728,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6535100033106330066, guid: d64776fb1910ce942951f24fdf8fa336, type: 3}
+      propertyPath: Cold
+      value: 
+      objectReference: {fileID: 21300000, guid: 732206f972428454e9646f7dba1bbe5b, type: 3}
     - target: {fileID: 7846448829889472442, guid: d64776fb1910ce942951f24fdf8fa336, type: 3}
       propertyPath: m_RootOrder
       value: 4

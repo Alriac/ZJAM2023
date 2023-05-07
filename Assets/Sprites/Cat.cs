@@ -1,26 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cat : MonoBehaviour
 {
 
 
     public Animator a;
-    public GameObject window;
     // Start is called before the first frame update
     void Start()
     {
         a = GetComponent<Animator>();
-        a.enabled = false;
+        GameEvents.Ins.OnEventHappened += OnWindowOpenedToLong;
     }
+
+
+    void OnWindowOpenedToLong(EnumEventTypes etype, EnumObjectTypes otype)
+    {
+        if(etype == EnumEventTypes.WindowOpenedTooLong && otype == EnumObjectTypes.Window)
+        {
+            Debug.Log("Hola");
+            a.SetBool("GatoSale", true);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (window.transform.GetChild(1).GetComponent<Animator>().GetBool("Is On")) {
-            a.enabled = true;
+        if (a.GetCurrentAnimatorStateInfo(0).IsName("GatoMuere"))
+        {
+            SceneManager.LoadScene("Muerte");
         }
-        //if (window)
     }
 }
