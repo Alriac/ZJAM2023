@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 81d6cd72c1717674d847499be368e97f
+guid: bf3f19aa4e41f904f93e7d561f2a8796
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: aireacondicionado_anim_0
+      name: aireacondicionadoh_anim_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 37
-        height: 27
+        width: 39
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e0bf15eb66032b4799af1b019ffb1d3
-      internalID: -460939884
+      spriteID: 762306750db5cd841a4bfd32c1b06319
+      internalID: 1411259626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aireacondicionado_anim_1
+      name: aireacondicionadoh_anim_1
       rect:
         serializedVersion: 2
         x: 62
         y: 0
-        width: 37
-        height: 27
+        width: 39
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 458f0bf9cc351c64a8e8105778f75652
-      internalID: -2043055235
+      spriteID: f06a9233ccf484440bccee9e1af60759
+      internalID: -2052225290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aireacondicionado_anim_2
+      name: aireacondicionadoh_anim_2
       rect:
         serializedVersion: 2
         x: 124
         y: 0
-        width: 37
-        height: 27
+        width: 39
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,8 +175,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7c8ffb45acf9f140a03c1a5566a5339
-      internalID: -473676140
+      spriteID: e04de5eb3bdfd6544a98e79b0723ca5d
+      internalID: 60028113
       vertices: []
       indices: 
       edges: []
@@ -192,9 +192,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      aireacondicionado_anim_0: -460939884
-      aireacondicionado_anim_1: -2043055235
-      aireacondicionado_anim_2: -473676140
+      aireacondicionadoh_anim_0: 1411259626
+      aireacondicionadoh_anim_1: -2052225290
+      aireacondicionadoh_anim_2: 60028113
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
