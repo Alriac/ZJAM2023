@@ -28,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 8796556180208876002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.33, y: -3.17, z: 5}
-  m_LocalScale: {x: 6.348809, y: 6.348809, z: 6.348809}
+  m_LocalScale: {x: 4.597501, y: 4.597501, z: 4.597501}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2352928643886084901
 SpriteRenderer:
@@ -112,7 +112,7 @@ MonoBehaviour:
   ObjectsForFun: 030000000200000006000000
   ObjectsForTemp: 080000000100000000000000
   TextsForHunger:
-  - "\xA1Fr\xEDeme un huevo!"
+  - "\xA1Pochame un huevo!"
   - "Ahora mismo me comer\xEDa un jabal\xED enterito"
   - "Hija, que la dentadura nueva no est\xE1 de adorno"
   - "Con la barriga vac\xEDa, ninguno muestra alegr\xEDa"
