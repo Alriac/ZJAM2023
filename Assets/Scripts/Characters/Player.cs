@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -10,7 +11,7 @@ public class Player : MonoBehaviour
     SpriteRenderer sr;
     Rigidbody2D rb;
 
-    public float time = 0.0f;
+    bool stopMovement = false;
 
     private void Awake()
     {
@@ -22,16 +23,16 @@ public class Player : MonoBehaviour
     {
         a = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        GameEvents.Ins.OnGameEnded += OnGameEnded;
         PlayerPrefs.SetFloat("total time played", 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerPrefs.SetFloat("total time played", PlayerPrefs.GetFloat("total time played") + Time.deltaTime);
         float horizontal_move = Input.GetAxis("Horizontal");
         float vertical_move = Input.GetAxis("Vertical");
-        if (horizontal_move == 0)
+        if (horizontal_move == 0 || stopMovement)
         {
             a.SetBool("HorWalk", false);
         }
@@ -53,7 +54,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (vertical_move == 0)
+        if (vertical_move == 0 || stopMovement)
         {
             a.SetBool("VerWalkDown", false);
             a.SetBool("VerWalkUp", false);
@@ -71,7 +72,7 @@ public class Player : MonoBehaviour
         }
 
         // transform.position += new Vector3(horizontal_move, vertical_move, 0) * speed * Time.deltaTime;
-        if ((Input.GetKeyDown(KeyCode.Space)) && GameEvents.Ins.OnPlayerActionKey != null)
+        if ((Input.GetKeyDown(KeyCode.Space)) && GameEvents.Ins.OnPlayerActionKey != null && !stopMovement)
         {
             GameEvents.Ins.OnPlayerActionKey();
         }
@@ -84,17 +85,17 @@ public class Player : MonoBehaviour
 
         if (Mathf.Abs(x) < 0.25 && Mathf.Abs(y) < 0.25)
         {
-           rb.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
         }
-        else
+        else if (!stopMovement)
         {
-           rb.velocity = new Vector2(x, y).normalized * speed;
+            rb.velocity = new Vector2(x, y).normalized * speed;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnGameEnded(EnumGameEndingReason ending)
     {
-
+        stopMovement = true;
     }
 
 

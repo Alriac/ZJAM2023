@@ -227,7 +227,6 @@ GameObject:
   - component: {fileID: 10919136}
   - component: {fileID: 10919139}
   - component: {fileID: 10919138}
-  - component: {fileID: 10919137}
   - component: {fileID: 10919140}
   m_Layer: 5
   m_Name: GrandmaFace
@@ -256,27 +255,6 @@ RectTransform:
   m_AnchoredPosition: {x: -350.41, y: 186.2}
   m_SizeDelta: {x: 96.1881, y: 66.2114}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &10919137
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10919135}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0286bfe7db661a9488783ade7e463b82, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &10919138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,7 +871,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  time: 0
 --- !u!50 &208750779
 Rigidbody2D:
   serializedVersion: 4
@@ -5005,7 +4982,6 @@ GameObject:
   - component: {fileID: 976625702}
   - component: {fileID: 976625705}
   - component: {fileID: 976625704}
-  - component: {fileID: 976625703}
   - component: {fileID: 976625706}
   m_Layer: 5
   m_Name: LandlorFace
@@ -5034,27 +5010,6 @@ RectTransform:
   m_AnchoredPosition: {x: 350, y: 177.2}
   m_SizeDelta: {x: 107.5892, y: 74.0594}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &976625703
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976625701}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1bb49a0ce66fe5649bc877b93c8b7a7d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &976625704
 MonoBehaviour:
   m_ObjectHideFlags: 0

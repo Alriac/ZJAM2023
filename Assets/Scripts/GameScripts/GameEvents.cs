@@ -34,4 +34,6 @@ public class GameEvents : MonoBehaviour
     public Action OnPlayerActionKey;
 
     public Action<string, string, FontStyles> OnNewTextForMainDialog;
+
+    public Action<EnumGameEndingReason> OnGameEnded;
 }

@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class EndGameScript : MonoBehaviour
 {
     public float MaxAngryness;
+    float timePlayed = 0.0f;
 
     void Start()
     {
         GameEvents.Ins.OnScoreChanged += OnScoreChanged;
+        GameEvents.Ins.OnGameEnded = OnGameEnded;
     }
 
     void OnScoreChanged(EnumScoreType stype, float newScore)
@@ -19,8 +21,15 @@ public class EndGameScript : MonoBehaviour
             if (newScore >= MaxAngryness)
             {
                 SetMusicToLastPlaytime.SetTime(GetComponent<AudioSource>().time);
+                if (GameEvents.Ins.OnGameEnded != null) GameEvents.Ins.OnGameEnded(stype == EnumScoreType.GrannyAnger ? EnumGameEndingReason.GrandmaAngry : EnumGameEndingReason.LandlordAngry);
                 SceneManager.LoadScene("Muerte");
             }
+    }
+
+    void OnGameEnded(EnumGameEndingReason reason)
+    {
+        PlayerPrefs.SetFloat("total time played", Time.time - timePlayed);
+        PlayerPrefs.SetInt("game ended reason", (int)reason);
     }
 
 }

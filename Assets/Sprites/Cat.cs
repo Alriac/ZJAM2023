@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,8 +19,9 @@ public class Cat : MonoBehaviour
 
     void OnWindowOpenedToLong(EnumEventTypes etype, EnumObjectTypes otype)
     {
-        if(etype == EnumEventTypes.WindowOpenedTooLong && otype == EnumObjectTypes.Window)
+        if (etype == EnumEventTypes.WindowOpenedTooLong && otype == EnumObjectTypes.Window)
         {
+            if (GameEvents.Ins.OnGameEnded != null) GameEvents.Ins.OnGameEnded(EnumGameEndingReason.CatIsGone);
             a.SetBool("GatoSale", true);
         }
     }
