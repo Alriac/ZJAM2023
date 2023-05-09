@@ -28,6 +28,7 @@ public class MusicScript : MonoBehaviour
     private void Awake()
     {
         source = GetComponent<AudioSource>();
+        source.time = SetMusicToLastPlaytime.GetTime();
     }
     void Start()
     {

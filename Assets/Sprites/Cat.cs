@@ -20,7 +20,6 @@ public class Cat : MonoBehaviour
     {
         if(etype == EnumEventTypes.WindowOpenedTooLong && otype == EnumObjectTypes.Window)
         {
-            Debug.Log("Hola");
             a.SetBool("GatoSale", true);
         }
     }
