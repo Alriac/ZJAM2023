@@ -31,6 +31,8 @@ public class SoundScript : MonoBehaviour
                 GameEvents.Ins.OnObjectSwitched += OnObjectSwitchedOn; break;
             case EnumEventTypes.ObjectSwitched:
                 GameEvents.Ins.OnObjectSwitched += OnObjectSwitched; break;
+            case EnumEventTypes.WindowOpenedTooLong:
+                GameEvents.Ins.OnEventHappened += OnWindowOpenedTooLong; break;
                 // TODO: Registrar mas tipos de eventos para los sonidos que tengamos y añadirlos aqui.
         }
 
@@ -71,6 +73,14 @@ public class SoundScript : MonoBehaviour
 
     void OnObjectSwitched(bool newStatus, EnumObjectTypes oType, int times)
     {
+        if (oType != ForObjectType && !IgnoreObjectType) return;
+
+        source.Play();
+    }
+
+    void OnWindowOpenedTooLong(EnumEventTypes etype, EnumObjectTypes oType)
+    {
+        if (etype != EnumEventTypes.WindowOpenedTooLong) return;
         if (oType != ForObjectType && !IgnoreObjectType) return;
 
         source.Play();

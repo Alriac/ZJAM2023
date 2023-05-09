@@ -5765,7 +5765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255e2072295bba145844b7526dcc6d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: {fileID: 0}
+  a: {fileID: 1107421995}
 --- !u!114 &1107421999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6856,6 +6856,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4957446112193616518, guid: d7e94a78a870b1d498e7d8d66873ff37, type: 3}
+      propertyPath: StopOnGameEndings
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5570288287159668497, guid: d7e94a78a870b1d498e7d8d66873ff37, type: 3}
       propertyPath: m_Name
       value: GameScripts

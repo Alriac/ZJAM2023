@@ -10,6 +10,8 @@ public class MusicScript : MonoBehaviour
     public AudioClipSettings[] AudioClips;
     AudioSource source;
 
+    public EnumGameEndingReason StopOnGameEndings;
+
     public float MinIntervalMusicChange;
     float lastTimeMusicChange = 0;
 
@@ -34,6 +36,7 @@ public class MusicScript : MonoBehaviour
     {
         GameEvents.Ins.OnObjectSwitched += OnObjectSwitched;
         GameEvents.Ins.OnScoreChanged += OnScoreChanged;
+        GameEvents.Ins.OnGameEnded += OnGameEnded;
     }
 
     // Update is called once per frame
@@ -87,6 +90,15 @@ public class MusicScript : MonoBehaviour
         if (objectType == EnumObjectTypes.Jukebox)
         {
             source.volume = status ? 1.25f : 1f;
+        }
+    }
+
+    void OnGameEnded(EnumGameEndingReason endingReason)
+    {
+        if((endingReason & StopOnGameEndings) > 0)
+        {
+            this.enabled = false;
+            source.Stop();
         }
     }
 }
