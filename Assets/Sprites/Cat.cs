@@ -32,7 +32,7 @@ public class Cat : MonoBehaviour
     {
         if (a.GetCurrentAnimatorStateInfo(0).IsName("GatoMuere"))
         {
-            SceneManager.LoadScene("Muerte");
+            SceneManager.LoadSceneAsync("Muerte");
         }
     }
 }
