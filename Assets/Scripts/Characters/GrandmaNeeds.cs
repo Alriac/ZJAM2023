@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using TMPro;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +11,8 @@ public class GrandmaNeeds : MonoBehaviour
 {
 
     public float AngrynessTotal { get { return Angryness; } }
-    float Angryness = 0.0f;
-    float MaxAngryness = 100.0f;
+    public float Angryness = 0.0f;
+    public float MaxAngryness = 100.0f;
 
     public float StatHunger;
     public float StatFun;
@@ -121,9 +123,8 @@ public class GrandmaNeeds : MonoBehaviour
             accumulatedAttempts += CurrentRequests[i].RemindersGiven + 1;
         }
         Angryness += accumulatedAttempts * Time.deltaTime;
-        if (Angryness < MaxAngryness) {
-            if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
-        }
+
+        if (GameEvents.Ins.OnScoreChanged != null) GameEvents.Ins.OnScoreChanged(EnumScoreType.GrannyAnger, this.AngrynessTotal);
     }
 
     private void SetNeedSprite(Request req)
@@ -131,16 +132,25 @@ public class GrandmaNeeds : MonoBehaviour
         BubbleText bubble = GeneratedTextBubble.GetComponent<BubbleText>();
         Sprite selectedSprite = null;
 
-        if (UnityEngine.Random.Range(0.0f, 100.0f) > 20.0f) {
-            if (req.StatType == EnumStatType.Hunger) {
+        if (UnityEngine.Random.Range(0.0f, 100.0f) > 20.0f)
+        {
+            if (req.StatType == EnumStatType.Hunger)
+            {
                 selectedSprite = Food;
-            } else if (req.StatType == EnumStatType.Entretainment) {
+            }
+            else if (req.StatType == EnumStatType.Entretainment)
+            {
                 selectedSprite = Fun;
-            } else if (req.StatType == EnumStatType.Temperature) {
+            }
+            else if (req.StatType == EnumStatType.Temperature)
+            {
                 selectedSprite = Cold;
             }
-        } else {
-            switch (req.ObjectType) {
+        }
+        else
+        {
+            switch (req.ObjectType)
+            {
                 case EnumObjectTypes.Fan:
                     selectedSprite = Fan_icon;
                     break;
