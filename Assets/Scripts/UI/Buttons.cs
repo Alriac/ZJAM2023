@@ -3,14 +3,21 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class Buttons : MonoBehaviour
 {
 
     public Button Play;
     public Button Exit;
     public Button BackToMenu;
-    public AudioSource asource;
+    public AudioSource AudioSourceMusica;
+    public AudioClip AudioClipClick;
+    AudioSource AudioSourceBotones;
 
+    private void Awake()
+    {
+        AudioSourceBotones = GetComponent<AudioSource>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -28,18 +35,26 @@ public class Buttons : MonoBehaviour
 
     void LetsPlay()
     {
-        SetMusicToLastPlaytime.SetTime(asource.time);
-        SceneManager.LoadScene("ZJAM23");
+        if (AudioSourceMusica != null) SetMusicToLastPlaytime.SetTime(AudioSourceMusica.time);
+        PlayClick();
+        SceneManager.LoadSceneAsync("ZJAM23");
     }
 
     void GetOut()
     {
+        PlayClick();
         Application.Quit();
     }
 
     void GoToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        PlayClick();
+        var a = SceneManager.LoadSceneAsync("Menu");
     }
 
+    void PlayClick()
+    {
+        AudioSourceBotones.clip = AudioClipClick;
+        AudioSourceBotones.Play();
+    }
 }
