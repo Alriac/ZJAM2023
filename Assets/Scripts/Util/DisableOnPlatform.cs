@@ -7,6 +7,8 @@ public class DisableOnPlatform : MonoBehaviour
 {
     public EnumSupportedPlatforms DisableOnPlatforms;
     public bool DeleteInsteadDisabling;
+    public bool InverseMode; // Hace que funcione del revés, tan solo lo deja activo en plataformas seleccionadas.
+
     [HideInInspector]
     public bool IsDisabled { get; private set; }
     private void Awake()
@@ -14,15 +16,15 @@ public class DisableOnPlatform : MonoBehaviour
         bool disable = false;
 
 #if UNITY_WEBGL
-        if ((DisableOnPlatforms & EnumSupportedPlatforms.Web) > 0) disable = true;
+        if ((DisableOnPlatforms & EnumSupportedPlatforms.Web) > 0 ^ InverseMode) disable = true;
 #endif
 
 #if UNITY_STANDALONE
-        if ((DisableOnPlatforms & EnumSupportedPlatforms.Desktop) > 0) disable = true;
+        if ((DisableOnPlatforms & EnumSupportedPlatforms.Desktop) > 0 ^ InverseMode) disable = true;
 #endif
 
 #if UNITY_ANDROID || UNITY_IOS
-        if ((DisableOnPlatforms & EnumSupportedPlatforms.Mobile) > 0) disable = true;
+        if ((DisableOnPlatforms & EnumSupportedPlatforms.Mobile) > 0 ^ InverseMode) disable = true;
 #endif
 
         if (disable)

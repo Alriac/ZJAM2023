@@ -640,6 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisableOnPlatforms: 32
   DeleteInsteadDisabling: 0
+  InverseMode: 0
 --- !u!1 &722184295
 GameObject:
   m_ObjectHideFlags: 0
