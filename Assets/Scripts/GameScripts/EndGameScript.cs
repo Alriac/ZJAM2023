@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 public class EndGameScript : MonoBehaviour
 {
     public float MaxAngryness;
-    float timePlayed = 0.0f;
+    float timeStarted = 0.0f;
 
     void Start()
     {
+        timeStarted = Time.time;
         GameEvents.Ins.OnScoreChanged += OnScoreChanged;
         GameEvents.Ins.OnGameEnded = OnGameEnded;
     }
@@ -28,7 +29,7 @@ public class EndGameScript : MonoBehaviour
 
     void OnGameEnded(EnumGameEndingReason reason)
     {
-        PlayerPrefs.SetFloat("total time played", Time.time - timePlayed);
+        PlayerPrefs.SetFloat("total time played", Time.time - timeStarted);
         PlayerPrefs.SetInt("game ended reason", (int)reason);
     }
 
