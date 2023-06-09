@@ -13,7 +13,7 @@ public class EndGameScript : MonoBehaviour
     {
         timeStarted = Time.time;
         GameEvents.Ins.OnScoreChanged += OnScoreChanged;
-        GameEvents.Ins.OnGameEnded = OnGameEnded;
+        GameEvents.Ins.OnGameEnded += OnGameEnded;
     }
 
     void OnScoreChanged(EnumScoreType stype, float newScore)
